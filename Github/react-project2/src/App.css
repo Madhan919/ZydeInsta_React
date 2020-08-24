@@ -1,0 +1,1139 @@
+.makeStyles-large-3 {
+  width: 190px !important;
+  height: 190px !important;
+  cursor: pointer !important;
+}
+.back {
+  float: left;
+  margin-top: 17px;
+  margin-left: 20px;
+}
+.dotImg1 {
+  float: right;
+  margin-top: -34px;
+  cursor: pointer;
+}
+
+.showPassword {
+  font-size: 14px;
+  font-weight: 600;
+  position: absolute;
+  margin-left: -60px;
+  margin-top: 13px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #fff;
+}
+.nodata {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 22px;
+  transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, -50%);
+  color: gray;
+}
+.spin {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.chooseImage {
+  color: gray;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  margin-top: 125px;
+}
+.withStyles\(ForwardRef\(DialogContent\)\)-root-6 {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+.MuiDialog-paperWidthSm {
+  max-width: 950px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  margin-left: 10px !important;
+}
+.overlayDiv {
+  display: flex;
+}
+.overlay {
+  position: absolute;
+  width: 295px;
+  height: 350px;
+  margin-top: 0px;
+  transition: 0.5s ease;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+}
+.box-1:hover .overlay {
+  opacity: 1;
+}
+
+.hide {
+  display: none;
+}
+.modal-backdrop {
+  background-color: transparent;
+}
+.modal-backdrop-transparent {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1000;
+}
+.modal-backdrop-orange {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: orange;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  z-index: 1040;
+}
+.modal-backdrop-blue {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: blue;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  z-index: 1040;
+}
+.modal-transition {
+  transition: all 0.4s ease;
+}
+.imageUpload {
+  width: 404px;
+  height: 250px;
+  border: solid 1px #e0e0e0;
+  margin-left: 20px;
+}
+.remove-profile {
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  margin: 0;
+}
+.cancel-profile {
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.links {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  color: blue;
+  display: inline;
+  text-indent: 0;
+  font-size: 13px;
+}
+.textfield {
+  color: gray;
+  width: 400px;
+  height: 35px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+  font-size: 17px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+.upload {
+  margin-left: 604px;
+  margin-top: -3px;
+  cursor: pointer;
+}
+.upload-button {
+  color: #fff;
+  background-color: gray;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.uploadImage {
+  height: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 405px;
+  object-fit: cover;
+}
+.upload1 {
+  display: inline-block;
+  margin-left: 303px;
+  margin-top: -1px;
+  cursor: pointer;
+}
+.MuiTypography-h6 {
+  text-align: center;
+}
+.MuiButton-root {
+  text-transform: capitalize !important;
+  text-align: center;
+}
+.WithStyles\(ForwardRef\(DialogContent\)\)-root-6 {
+  padding-left: 100px !important;
+  padding-right: 100px !important;
+}
+.red {
+  color: red;
+}
+.container-1 {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.box-1 {
+  flex-basis: 25.7%;
+  margin-top: 24px;
+  margin-right: 29px;
+  cursor: pointer;
+  justify-content: space-around;
+}
+
+.box-2 {
+  flex: 1;
+}
+.box-3 {
+  flex: 1;
+}
+.myImagess {
+  width: 295px;
+  height: 350px;
+  object-fit: cover;
+}
+.MuiAvatar-img {
+  cursor: pointer;
+}
+.myPost {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  width: 320px;
+}
+.container {
+  background-color: #fff !important;
+  font-size: 20px;
+  position: relative;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, -50%);
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  border-spacing: 1em;
+  padding: 50px;
+  width: 300px;
+  margin-top: 35px;
+  overflow: auto;
+}
+.container1 {
+  background-color: #fff !important;
+  position: relative;
+  /* top: 100%; */
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, -50%);
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  border-spacing: 1em;
+  padding: 20px 40px 20px 40px;
+  width: 300px !important;
+  vertical-align: middle;
+  overflow: auto;
+  top: 30px !important;
+}
+.container1-2 {
+  background-color: #fff !important;
+  position: relative;
+  /* top: 100%; */
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, -50%);
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  border-spacing: 1em;
+  padding: 20px 40px 20px 40px;
+  width: 300px !important;
+  vertical-align: middle;
+  overflow: auto;
+  top: 120px !important;
+}
+.containers1 {
+  background-color: #fff !important;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+}
+.container2 {
+  background-color: #fff !important;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  border-spacing: 1em;
+  padding: 20px 40px 20px 40px;
+  width: 300px !important;
+  vertical-align: middle;
+  overflow: auto;
+  height: 400px;
+}
+.button {
+  font-size: 20px;
+  display: block;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: blue;
+  padding: 10px;
+  left: 100px;
+  margin-left: 100px;
+}
+.header {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+.header1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 12px;
+  color: darkgrey;
+}
+.header2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.image1 {
+  width: 20px;
+  height: 20px;
+  margin-left: -100px;
+  padding-right: 30px;
+}
+.image {
+  width: 20px;
+  height: 20px;
+}
+.facebookImg {
+  margin-top: -3px;
+  float: left;
+  padding-right: 3px;
+}
+.gmailImg {
+  margin-top: -3px;
+  vertical-align: middle;
+  float: left;
+}
+.google {
+  font-family: Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold !important;
+  font-size: 17px !important;
+  text-align: center !important;
+  display: block;
+  background-color: #fff;
+  width: 300px;
+  border: 1px solid #e0e0e0;
+  padding: 5px;
+  outline: none;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  height: 58px;
+  color: rgba(0, 0, 0, 0.54);
+  max-width: -webkit-fill-available;
+}
+.gmail {
+  font-size: calc(0.27548vw + 12.71074px);
+  display: block;
+  background-color: #de1414;
+  width: 300px;
+  border: 1px solid #e0e0e0;
+  padding: calc(0.34435vw + 13.38843px) calc(0.34435vw + 18.38843px);
+  outline: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  height: 58px;
+  border-radius: 5px;
+  max-width: -webkit-fill-available;
+}
+.facebook {
+  font-size: 20px;
+  display: block;
+  background-color: #fff;
+  width: 300px;
+  border: 1px solid #e0e0e0;
+  padding: 5px;
+  outline: none;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  max-width: -webkit-fill-available;
+}
+.text {
+  margin-top: 10px;
+}
+.center {
+  text-align: center;
+}
+.text {
+  margin-bottom: 10px;
+}
+.MuiOutlinedInput-root {
+  position: relative;
+  border-radius: 4px;
+  margin-bottom: 25px !important;
+}
+.MuiOutlinedInput-root {
+  position: relative;
+  border-radius: 4px;
+  width: 300px;
+  height: 45px;
+}
+.submit {
+  width: 300px;
+  height: 45px;
+  color: white;
+  background-color: #e86a6a;
+  font-weight: bold;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  margin-top: 0px;
+  max-width: -webkit-fill-available;
+}
+.kep-login-facebook {
+  font-family: Helvetica, sans-serif;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: calc(0.27548vw + 12.71074px);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.3s, border-color 0.3s;
+  background-color: #4c69ba;
+  border: calc(0.06887vw + 0.67769px) solid #4c69ba;
+  padding: calc(0.34435vw + 13.38843px) calc(0.34435vw + 18.38843px);
+  width: 300px;
+  border-radius: 5px !important;
+  max-width: -webkit-fill-available;
+}
+.angularBtn {
+  position: absolute;
+  outline: none !important;
+  background: #fff;
+  margin-left: -38px;
+  margin-top: 9px;
+  border-color: #fff;
+  border: none;
+}
+.MuiFormHelperText-root.Mui-error {
+  color: #f44336;
+  margin-top: -20px;
+}
+.link {
+  text-decoration: none;
+  color: blue;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.link-a {
+  text-decoration: none;
+  position: relative;
+  margin-top: 5px;
+  color: blue;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.link2 {
+  text-decoration: none;
+  color: blue;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: blue;
+}
+.headerTxt {
+  font-weight: 400;
+  font-size: 16px;
+}
+.signupTxt {
+  font-weight: 700;
+  opacity: 0.7;
+  text-align: center;
+  font-size: 17px;
+  color: gray;
+}
+.terms {
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-indent: 6px;
+  text-align: left;
+}
+.account {
+  font-size: 14px;
+  text-align: center !important;
+  margin-top: 15px;
+}
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 120px;
+}
+.logo-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+.space {
+  flex: 1;
+}
+.post {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 150px;
+  padding-bottom: 20px;
+}
+.logo1 {
+  display: inline-block;
+  height: 25px;
+  width: 120px;
+  margin-left: 200px;
+  margin-bottom: -7px;
+}
+.post1 {
+  display: inline-flex;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  /* width: 100%; */
+  height: 350px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+.container3 {
+  position: fixed;
+  height: 560px;
+  width: 100%;
+  background-color: rgba(var(--b3f, 250, 250, 250), 1);
+  overflow: auto;
+}
+/**************/
+.container3 {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(var(--b3f, 250, 250, 250), 1);
+  overflow: auto;
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+.post2 {
+  width: 300px;
+  height: 350px;
+  padding-right: 20px;
+}
+
+/***********/
+.innerDiv {
+  margin-left: 200px;
+}
+
+.spinner {
+  display: block;
+  margin-left: 48%;
+}
+.myText {
+  margin-right: 15%;
+}
+.rootClass {
+  margin-top: 10px;
+}
+.navbar {
+  margin-bottom: 12px;
+}
+.search {
+  display: inline-block;
+  width: 190px;
+  height: 30px;
+  background-color: rgba(var(--b3f, 250, 250, 250), 1);
+  outline: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-left: 220px;
+  padding-left: 20px;
+}
+.search-icon {
+  display: inline-block;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+.logo_icon {
+  padding-right: 10px;
+  margin-bottom: -7px;
+  cursor: pointer;
+}
+.imageWrap {
+  margin-left: 146px;
+}
+.MuiInputLabel-formControl {
+  top: -5px !important;
+}
+.MuiFormHelperText-contained {
+  margin-bottom: 10px !important;
+}
+.linkBtn {
+  border: none;
+  outline: none;
+  color: blue;
+  background-color: #fff;
+}
+.profile {
+  margin-top: -120px;
+  font-size: 25px;
+  color: gray;
+  position: absolute;
+  margin-left: 320px;
+}
+.profile label {
+  font-size: 16px;
+  padding-right: 15px;
+  color: #000000;
+}
+.logo_icon_small {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: absolute;
+  margin-top: 5px;
+}
+
+.flex {
+  display: inline;
+  position: absolute;
+  top: 17px;
+}
+.flex1 {
+  width: 24px;
+  height: 24px;
+}
+.myImage {
+  color: transparent;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  text-align: center;
+  text-indent: 10000px;
+  cursor: pointer;
+}
+.myRoot {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.25rem;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1;
+  user-select: none;
+  border-radius: 50%;
+  justify-content: center;
+}
+.feed-root {
+  background-color: rgba(var(--b3f, 250, 250, 250), 1);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.container4 {
+  position: fixed;
+  height: 560px;
+  width: 100%;
+  overflow: auto;
+  margin-top: 10px;
+}
+.image-root {
+  margin-right: 200px;
+  margin-left: 0;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  margin-top: 35px;
+}
+.image-root1 {
+  margin-right: 0;
+  margin-left: 0;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  margin-top: 0px;
+}
+.desc {
+  margin-left: 20px;
+  padding-bottom: 20px;
+}
+.postImage {
+  display: block;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.logoAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.profileName {
+  margin-left: 62px;
+  margin-top: -45px;
+  padding-bottom: 40px;
+}
+.image-cropper {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.profile-pic {
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  cursor: pointer;
+}
+.title {
+  padding: 20px;
+}
+.name {
+  font-size: 20px;
+  color: rgba(var(--f75, 38, 38, 38), 1);
+  padding-left: 20px;
+  margin-top: -4px;
+  position: absolute;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dotImg {
+  float: right;
+  margin-top: -30px;
+  cursor: pointer;
+}
+
+.timeCaption {
+  position: absolute;
+  margin-top: 21px;
+  margin-left: 20px;
+  font-size: 14px;
+}
+.navBtn {
+  outline: none;
+  background-color: #fff;
+  border: none;
+  color: gray;
+  margin-right: 30px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.underline {
+  border-bottom: 2px solid #e0e0e0 !important;
+  color: #000000 !important;
+}
+.navButtons {
+  float: right;
+  margin-right: 192px;
+}
+
+@media screen and (max-width: 1030px) {
+  .makeStyles-large-3 {
+    width: 130px !important;
+    height: 130px !important;
+    cursor: pointer !important;
+  }
+  .showPassword {
+    margin-top: -57px;
+    margin-right: 10px;
+    float: right;
+    position: relative;
+  }
+  .chooseImage {
+    margin-top: 75px;
+  }
+  .MuiDialog-paperWidthSm {
+    max-width: 600px !important;
+  }
+  .imageUpload {
+    width: 250px;
+    height: 150px;
+    border: solid 1px #e0e0e0;
+    margin-left: 20px;
+  }
+  .uploadImage {
+    height: 250px;
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 250px;
+    object-fit: cover;
+  }
+  .uploadImage {
+    height: 156px;
+    display: block;
+    margin-left: 20px;
+    /* margin-right: 20px; */
+    width: 250px;
+    object-fit: contain;
+  }
+  .upload-button {
+    width: 96px;
+    margin-right: 0;
+    margin-top: 10px;
+  }
+  .textfield {
+    color: gray;
+    width: 246px;
+    height: 35px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 15px;
+    font-size: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+  .upload1 {
+    margin-left: 0;
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+    margin-top: -1px;
+  }
+  .navBtn {
+    outline: none;
+    background-color: #fff;
+    border: none;
+    color: gray;
+    margin-right: 5px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .angularBtn {
+    position: relative;
+    outline: none !important;
+    background: #fff;
+    margin-top: -61px;
+    border-color: #fff;
+    border: none;
+    float: right;
+    right: 1px;
+  }
+  .link-a {
+    display: block;
+    text-align: left;
+    margin-left: -6px;
+  }
+
+  .myUpload {
+    display: inline;
+  }
+  .account {
+    font-size: 12px;
+    text-align: center !important;
+    margin-top: 10px;
+  }
+  /* .container-1 {
+    margin-left: 0px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+  } */
+
+  .divIn {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+  .overlay {
+    width: 100%;
+    height: 130px;
+  }
+  .myImagess {
+    width: 100%;
+    height: 150px;
+  }
+  .box-1 {
+    flex-basis: 31%;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+    margin-right: 0px;
+    justify-content: space-around;
+    cursor: pointer;
+  }
+  .myPost {
+    width: 100px;
+    height: 200px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-left: -20px;
+  }
+  /* .post2
+    {
+      width: 80px;
+      height: 120px;
+      padding-left: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    } */
+  .flex-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .navButtons {
+    margin-right: 0;
+  }
+  .container4 {
+    width: 100%;
+    right: 0px;
+    left: 0px;
+    overflow: auto;
+  }
+  .desc {
+    padding: 0px;
+    margin-left: 10px;
+    margin-top: 7px;
+  }
+  .postImage {
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .feed-root {
+    background-color: rgba(var(--b3f, 250, 250, 250), 1);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
+  .image-root {
+    margin-right: 100px;
+    padding-bottom: 25px;
+    margin: 0px;
+    border: none;
+    background-color: #fff;
+    width: 100%;
+  }
+
+  .profile {
+    margin-top: -88px;
+    font-size: 17px;
+    font-weight: bold;
+    color: gray;
+    position: absolute;
+    margin-left: 150px;
+  }
+  .profile label {
+    font-size: 10px;
+    padding-right: 6px;
+    color: #000000;
+    line-height: 32px;
+  }
+  .logo1 {
+    height: 19px;
+    margin-left: 15px;
+    margin-bottom: -6px;
+    width: 85px;
+  }
+  .name {
+    font-size: 14px;
+    margin-top: 1px;
+    display: inline-block;
+  }
+  .timeCaption {
+    position: absolute;
+    margin-top: 18px;
+    margin-left: 20px;
+    font-size: 12px;
+  }
+  .MuiTextField-root {
+    display: block !important;
+    width: 100% !important;
+  }
+  .MuiOutlinedInput-root {
+    width: 100% !important;
+    display: block !important;
+  }
+  .MuiOutlinedInput-input {
+    padding: 12.5px 14px !important;
+  }
+  .submit {
+    width: 100% !important;
+    display: block !important;
+  }
+  .container1,
+  .container1-2 {
+    width: 60% !important;
+    margin: 13% 0% !important;
+    top: 40.5% !important;
+    overflow: scroll;
+  }
+  .container {
+    width: 60% !important;
+    overflow: auto !important;
+    margin: 10% 1% !important;
+  }
+  .buttonDiv {
+    text-align: center;
+  }
+  .gmaiBtn {
+    text-align: center;
+  }
+  .gmail {
+    display: inline-block;
+    width: 100%;
+    height: 10%;
+    font-size: 12px !important;
+  }
+  .terms {
+    font-size: 14px;
+    text-align: left;
+  }
+  .google {
+    display: inline-block;
+    width: 100%;
+    height: 10%;
+    font-weight: 900 !important;
+    text-align: center;
+    font-size: 13px !important;
+  }
+  .link {
+    display: inline-block;
+  }
+  .kep-login-facebook {
+    display: flex-inline;
+    width: 100% !important;
+    text-align: center;
+    font-size: 11px !important;
+    vertical-align: center !important;
+  }
+  .facebookImg {
+    position: absolute !important;
+    margin-left: -25px;
+    margin-top: -6px !important;
+  }
+  .kep-login-facebook.metro {
+    border-radius: 0 !important;
+    padding-right: 0px !important;
+    border-radius: 5px;
+  }
+  .gmailImg {
+    position: absolute;
+    margin-left: -30px;
+    margin-top: -7px;
+  }
+  .link2 {
+    display: block;
+  }
+  .container1 p .container1-2 p {
+    text-align: left;
+  }
+  .post1 {
+    width: 107px !important;
+    height: 110px !important;
+    padding-right: 5px;
+  }
+  .container3 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .innerDiv {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .imageWrap {
+    display: none;
+  }
+}

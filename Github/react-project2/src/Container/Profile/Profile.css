@@ -1,0 +1,39 @@
+.profile-pic {
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  cursor: pointer;
+}
+.myImagess {
+  width: 295px;
+  height: 350px;
+  object-fit: cover;
+}
+.container-1 {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.box-1 {
+  flex-basis: 25.7%;
+  margin-top: 24px;
+  margin-right: 29px;
+  cursor: pointer;
+  justify-content: space-around;
+}
+.MuiMenu-paper {
+  top: 155px !important;
+  float: right !important;
+  margin-right: 110px;
+}
+.imageWidth {
+  width: 950px;
+}
+
+@media screen and (max-width: 1300px) {
+  .imageWidth {
+    width: 100%;
+  }
+}
