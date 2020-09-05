@@ -31,6 +31,7 @@ const ImageAvatars = (props) => {
         className={classes.large}
         onClick={props.onClick}
       />
+      {props.loader}
     </div>
   );
 };

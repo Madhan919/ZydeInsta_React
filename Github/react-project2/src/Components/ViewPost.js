@@ -1,36 +1,20 @@
 import React from "react";
 import { Dialog } from "@material-ui/core";
-const InstaPost = (props) => {
+import PropTypes from "prop-types";
+
+import { AiOutlineLeft } from "react-icons/ai";
+
+const ViewPost = (props) => {
   return (
     <Dialog open={true}>
       <div className="image-root1">
-        <div
-          style={{
-            borderBottom: "1px solid rgb(224, 224, 224);",
-          }}
-        >
-          <img
-            alt="back"
-            src="Image/leftAngular.jpg"
-            className="back"
+        <div className="title1">
+          <AiOutlineLeft
+            size="1.8rem"
+            className="back1"
             onClick={props.onClick}
           />
-          <header
-            style={{
-              borderBottom: "solid 1px #e0e0e0",
-              textAlign: "center",
-              verticalAlign: "center",
-              fontWeight: "700",
-              paddingTop: "20px",
-              paddingBottom: "20px",
-            }}
-          >
-            Photo
-          </header>
-        </div>
-
-        <div className="title">
-          <div className="image-cropper">
+          <div className="image-cropper1">
             <img
               className="profile-pic"
               src={props.profileSrc}
@@ -41,22 +25,33 @@ const InstaPost = (props) => {
           <label
             className="name"
             onClick={props.onClick}
-            style={{ marginTop: "-40px", marginLeft: "50px" }}
+            style={{ marginTop: "-48px", marginLeft: "95px" }}
           >
             {props.profileName}
           </label>
           <span>{props.children}</span>
-          <label className="timeCaption">{props.postedTime}</label>
+          <label className="timeCaption1">{props.postedTime}</label>
         </div>
         <div className="imageWidth">
-          <img className="postImage" src={props.imgSrc} alt="img" />
+          <img className="postImage1" src={props.imgSrc} alt="img" />
         </div>
-        <p className="desc">
-          <b>{props.profileName}</b> {props.caption}
+        <p className="desc1">
+          <b>{props.profileName}</b>
+          {props.caption === "undefined" ? "" : ` ${props.caption}`}
         </p>
       </div>
+      {props.loader}
     </Dialog>
   );
 };
 
-export default InstaPost;
+ViewPost.propTypes = {
+  profileSrc: PropTypes.string,
+  onClick: PropTypes.func,
+  postedTime: PropTypes.string,
+  imgSrc: PropTypes.string,
+  profileName: PropTypes.string,
+  caption: PropTypes.string,
+};
+
+export default ViewPost;

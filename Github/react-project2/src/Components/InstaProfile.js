@@ -5,6 +5,7 @@ import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import ImageAvatars from "./Avatar";
 import axios from "axios";
+import spinner from "../Images/spinner.gif";
 
 const styles = (theme) => ({
   root: {
@@ -35,21 +36,32 @@ const InstaProfile = (props) => {
   const [open, setOpen] = React.useState(false);
   const [url, setUrl] = useState("");
   const [profile, setProfile] = useState("");
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
+    changeProfile();
+  }, [url]);
+  const changeProfile = () => {
     axios
       .get("http://localhost:9000/post/change-profile", {
         headers: { Authorization: `Bearer ${localStorage.getItem("tokens")}` },
       })
       .then((response) => {
-        setProfile(response.data.message.photo);
+        setProfile(response.data.response.photo);
       })
       .catch((errors) => {
         console.log(errors.response);
       });
-  }, []);
+  };
   const handleChange = (event) => {
-    setUrl(URL.createObjectURL(event.target.files[0]));
+    const imageUrl = URL.createObjectURL(event.target.files[0]);
+    setUrl("");
+    setLoader(true);
+
+    setTimeout(() => {
+      setUrl(imageUrl);
+      setLoader(false);
+    }, 2000);
     const fd = new FormData();
     fd.append("photo", event.target.files[0]);
     axios
@@ -60,6 +72,7 @@ const InstaProfile = (props) => {
       })
       .then((response) => {
         console.log(response);
+        setLoader(false);
       })
       .catch((errors) => {
         console.log(errors.response);
@@ -73,6 +86,7 @@ const InstaProfile = (props) => {
     setOpen(false);
   };
   const removeProfile = () => {
+    setLoader(true);
     axios
       .delete("http://localhost:9000/post/remove-profile", {
         headers: {
@@ -83,8 +97,9 @@ const InstaProfile = (props) => {
       .then((response) => {
         setProfile("");
         setUrl("");
-        window.location.reload(false);
         console.log(response);
+        changeProfile();
+        setLoader(false);
       })
       .catch((errors) => {
         console.log(errors.response);
@@ -96,13 +111,13 @@ const InstaProfile = (props) => {
     <div>
       <ImageAvatars
         imageName={
-          props.profileImage
+          loader && !url
+            ? spinner
+            : props.profileImage && !url
             ? `http://localhost:9000/${props.profileImage}`
             : url
-            ? url
-            : profile && `http://localhost:9000/${profile}`
         }
-        onClick={props.type === true && handleClickOpen}
+        onClick={props.type === true ? handleClickOpen : null}
       />
       <Dialog
         onClose={handleClose}
@@ -123,6 +138,8 @@ const InstaProfile = (props) => {
               textAlign: "center",
               display: "block",
               cursor: "pointer",
+              margin: "0",
+              padding: "0",
             }}
           >
             Upload Photo
@@ -135,9 +152,9 @@ const InstaProfile = (props) => {
           />
         </DialogContent>
         <DialogContent dividers>
-          <button onClick={removeProfile} className="remove-profile">
+          <p onClick={removeProfile} className="remove-profile">
             Remove Current Photo
-          </button>
+          </p>
         </DialogContent>
         <DialogContent dividers>
           <p onClick={handleClose} className="cancel-profile">

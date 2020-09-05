@@ -6,6 +6,7 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import Typography from "@material-ui/core/Typography";
 import { Button } from ".";
 import axios from "axios";
+import { FiCamera } from "react-icons/fi";
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -33,6 +34,8 @@ const Upload = (props) => {
   const [selectedFile, setFile] = useState(null);
   const [url, setUrl] = useState("");
   const [caption, setValue] = useState();
+  const [spinner, setSpinner] = useState();
+
   const handleChange = (event) => {
     setUrl(URL.createObjectURL(event.target.files[0]));
     setFile(event.target.files[0]);
@@ -40,6 +43,7 @@ const Upload = (props) => {
   const uploadImage = (event) => {
     const fd = new FormData();
     fd.append("image", selectedFile);
+    setSpinner(true);
     axios
       .post("http://localhost:9000/post", fd, {
         headers: {
@@ -49,7 +53,9 @@ const Upload = (props) => {
       })
       .then((response) => {
         console.log("response", response);
-        window.location.reload(false);
+        window.$name = response.data;
+        // window.location.reload(false);
+        setSpinner(false);
       })
       .catch((errors) => {
         console.log(errors.error);
@@ -66,10 +72,10 @@ const Upload = (props) => {
   };
   return (
     <div className="upload1">
-      <img
+      <FiCamera
+        strokeWidth="1"
+        size="1.8rem"
         className="upload1"
-        alt="upload"
-        src="Image/Icons/upload.png"
         onClick={handleClickOpen}
       />
       <Dialog
@@ -119,6 +125,7 @@ const Upload = (props) => {
             text="Cancel"
           />
         </DialogContent>
+        {spinner && <div className="spinner-border" />}
       </Dialog>
     </div>
   );

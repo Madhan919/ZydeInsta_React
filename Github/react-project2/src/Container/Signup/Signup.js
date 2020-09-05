@@ -5,8 +5,10 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { Divider } from "@material-ui/core";
 import axios from "axios";
+import { EmailSignin } from "../../Components";
 
 const Signup = (props) => {
+  const [errorMessage, setErrorMessage] = React.useState("");
   const responseGoogle = (response) => {
     const accessToken = {
       idToken: response.tokenId,
@@ -21,7 +23,11 @@ const Signup = (props) => {
         }
       })
       .catch((error) => {
-        console.log("error", error);
+        console.log("error", error.response);
+        setErrorMessage({
+          type: error.response.data.type,
+          msg: error.response.data.message,
+        });
       });
   };
   const responseFail = () => {
@@ -42,7 +48,11 @@ const Signup = (props) => {
         }
       })
       .catch((error) => {
-        console.log("error", error);
+        setErrorMessage({
+          type: error.response.data.type,
+          msg: error.response.data.message,
+        });
+        console.log("error", error.response);
       });
   };
 
@@ -68,6 +78,7 @@ const Signup = (props) => {
             style={{ fontWeight: "bold", textAlign: "center" }}
             icon={true}
           />
+
           <FacebookLogin
             appId="293536608633790"
             autoLoad={true}
@@ -83,11 +94,15 @@ const Signup = (props) => {
           >
             or
           </div>
-          <div className="gmaiBtn">
-            <button className="gmail" onClick={goSignin}>
-              <FiMail size="1.5rem" className="gmailImg" /> SIGN IN WITH GMAIL
-            </button>
-          </div>
+          <EmailSignin
+            className="gmail"
+            onClick={goSignin}
+            icon={
+              <FiMail size="1.5rem" style={{ verticalAlign: "text-top" }} />
+            }
+            text="SIGN IN WITH GMAIL"
+            textClass="textClass"
+          />
         </div>
         <div className="terms">
           By signing up, you agree to our,

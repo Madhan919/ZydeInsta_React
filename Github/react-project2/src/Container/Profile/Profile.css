@@ -24,12 +24,12 @@
   justify-content: space-around;
 }
 .MuiMenu-paper {
-  top: 155px !important;
+  /* top: 155px !important; */
   float: right !important;
   margin-right: 110px;
 }
 .imageWidth {
-  width: 950px;
+  width: 600px;
 }
 
 @media screen and (max-width: 1300px) {

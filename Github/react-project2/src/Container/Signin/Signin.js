@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { AiOutlineRight } from "react-icons/ai";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button } from "../../Components";
+import { Button, Spinner, Text } from "../../Components";
 import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,21 +26,24 @@ const Signin = (props) => {
   const [state, setState] = useState(initialValues);
   const [isValidate, setValidate] = useState(false);
   const [showPassword, setShow] = useState(false);
-  const [errorMessage, setErrorMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
   const [isUnique, setUnique] = useState(null);
+  const [spinner, setSpinner] = useState(false);
   const goLogin = (login) => {
+    setValidate(false);
+    setShow(false);
+    setState({ ...state, newpassword: "", password: "" });
     if (login === "signin") {
-      setValidate(false);
-      setUnique(true);
+      setUnique(null);
     } else if (login === "signup") {
-      setValidate(false);
       setUnique(false);
+      setState({ ...state, newpassword: "", password: "" });
     }
   };
   const checkEmail = (event) => {
     event.preventDefault();
-    console.log("check", errorMessage);
     if (regEmail.test(state.email)) {
+      setSpinner(true);
       axios
         .get("http://localhost:9000/check-email", {
           headers: {
@@ -48,21 +51,20 @@ const Signin = (props) => {
           },
         })
         .then((response) => {
-          if (response.data.message) {
-            if (response.data.message.loginType !== "custom") {
-              setErrorMessage(response.data.message.loginType);
-            } else {
-              setValidate(false);
-              setUnique(true);
-              setErrorMessage("");
-            }
-          } else {
-            setValidate(false);
+          console.log(response.data.response);
+          setValidate(false);
+          setErrorMessage("");
+          setSpinner(false);
+          if (!response.data.response) {
             setUnique(false);
+          } else {
+            setUnique(true);
           }
         })
         .catch((error) => {
           console.log(error.response);
+          setValidate(true);
+          setErrorMessage({ status: 422, msg: error.response.data.message });
         });
     } else {
       setValidate(true);
@@ -87,6 +89,7 @@ const Signin = (props) => {
         password: state.newpassword,
         loginType: "custom",
       };
+      setSpinner(true);
       axios
         .post("http://localhost:9000/signup", userData)
         .then((response) => {
@@ -94,13 +97,18 @@ const Signin = (props) => {
           if (response.data.token) {
             localStorage.setItem("tokens", response.data.token);
             props.history.push("/feeds");
+            setSpinner(false);
           }
         })
         .catch((error) => {
           setValidate(true);
           setUnique(false);
-          setErrorMessage("Email");
+          setErrorMessage({
+            msg: error.response.data.message,
+            status: error.response.data.status,
+          });
           console.log("Error", error.response);
+          setSpinner(false);
         });
     }
   };
@@ -109,6 +117,7 @@ const Signin = (props) => {
     event.preventDefault();
     if (!regEmail.test(state.email) || !regPassword.test(state.newpassword)) {
       setValidate(true);
+      setSpinner(true);
       if (isUnique === true) {
         axios
           .get("http://localhost:9000/signin", {
@@ -120,15 +129,22 @@ const Signin = (props) => {
           .then((res) => {
             console.log(res.data);
             if (res.data.token) {
+              setErrorMessage("");
               setValidate(false);
+              setSpinner(false);
               localStorage.setItem("tokens", res.data.token);
               props.history.push("/feeds");
             }
           })
           .catch((error) => {
+            setSpinner(true);
             setValidate(true);
-            setErrorMessage("Password");
+            setErrorMessage({
+              msg: error.response.data.message,
+              status: error.response.data.status,
+            });
             console.log(error.response);
+            setSpinner(false);
           });
       } else {
         setUnique(false);
@@ -152,34 +168,48 @@ const Signin = (props) => {
           onChange={(event) =>
             setState(
               { ...state, email: event.target.value.trim() },
-              setErrorMessage(""),
               setValidate(false)
             )
           }
+          value={state.email}
           error={
             (isValidate && !regEmail.test(state.email) && true) ||
-            (isValidate && errorMessage === "Email" && true) ||
-            errorMessage === "facebook" ||
-            (errorMessage === "google" && true)
+            (isValidate &&
+              (errorMessage.status === 409 || errorMessage.status === 422) &&
+              true)
           }
           helperText={
             (isValidate &&
               !regEmail.test(state.email) &&
               "Please Enter valid email") ||
             (isValidate &&
-              errorMessage === "Email" &&
-              "Email Address Exist Already..!") ||
-            ((errorMessage === "google" || errorMessage === "facebook") &&
-              `This user registered by ${errorMessage} login so use another email address. `)
+              (errorMessage.status === 409 || errorMessage.status === 422) &&
+              errorMessage.msg)
           }
           disabled={isUnique === true && true}
           fullWidth={true}
         />
-        {isUnique === null && (
-          <button className="angularBtn" onClick={checkEmail}>
-            <AiOutlineRight size="1.5rem" />
-          </button>
-        )}
+
+        {isUnique === null &&
+          (spinner ? (
+            <div
+              style={{
+                position: "unset",
+                float: "right",
+                marginTop: "-64px",
+                marginRight: "10px",
+              }}
+              className="spinner-border"
+            />
+          ) : (
+            <button
+              className={isValidate ? "angularBtn-1" : "angularBtn"}
+              onClick={checkEmail}
+            >
+              <AiOutlineRight size="1.5rem" />
+            </button>
+          ))}
+
         {isUnique === false && (
           <Fragment>
             <TextField
@@ -191,6 +221,7 @@ const Signin = (props) => {
               helperText={
                 isValidate && !state.firstName && "Please Enter First Name"
               }
+              value={state.firstName}
               onChange={(event) =>
                 setState({ ...state, firstName: event.target.value.trim() })
               }
@@ -201,6 +232,7 @@ const Signin = (props) => {
               id="outlined-basic3"
               label="Last Name"
               variant="outlined"
+              value={state.lastName}
               error={isValidate && !state.lastName && true}
               helperText={
                 isValidate && !state.lastName && "Please Enter Last Name"
@@ -212,10 +244,11 @@ const Signin = (props) => {
             />
             <TextField
               name="newpassword"
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="outlined-basic4"
               label="Password"
               variant="outlined"
+              value={state.newpassword}
               error={isValidate && !regPassword.test(state.newpassword) && true}
               helperText={
                 isValidate &&
@@ -227,6 +260,14 @@ const Signin = (props) => {
               }
               fullWidth={true}
             />
+            {state.newpassword && isUnique === false && (
+              <Button
+                type="button"
+                className={isValidate ? "showPassword-1" : "showPassword"}
+                onClick={() => (showPassword ? setShow(false) : setShow(true))}
+                text={showPassword ? "Hide" : "Show"}
+              />
+            )}
           </Fragment>
         )}
         {isUnique === true && (
@@ -236,9 +277,10 @@ const Signin = (props) => {
             id="outlined-basic5"
             label="Password"
             variant="outlined"
+            value={state.password}
             error={
               (isValidate && state.email && !state.password && true) ||
-              (isValidate && state.email && errorMessage === "Password" && true)
+              (isValidate && state.email && errorMessage.status === 403 && true)
             }
             helperText={
               (isValidate &&
@@ -246,22 +288,25 @@ const Signin = (props) => {
                 !state.password &&
                 "Please Enter Password") ||
               (isValidate &&
-                errorMessage === "Password" &&
-                "Incorrect Password")
+                state.email &&
+                errorMessage.status === 403 &&
+                errorMessage.msg)
             }
             onChange={(event) =>
               setState(
                 { ...state, password: event.target.value.trim() },
-                setValidate(false)
+                setValidate(false),
+                setErrorMessage("")
               )
             }
             fullWidth={true}
+            disabled={spinner && true}
           />
         )}
         {state.password && isUnique === true && (
           <Button
             type="button"
-            className="showPassword"
+            className={isValidate ? "showPassword-1" : "showPassword"}
             onClick={() => (showPassword ? setShow(false) : setShow(true))}
             text={showPassword ? "Hide" : "Show"}
           />
@@ -270,49 +315,74 @@ const Signin = (props) => {
           <Button
             className="submit"
             onClick={isUnique === false ? goSignup : goSignin}
-            text="Next"
+            text={!spinner && "Next"}
             style={
-              isUnique === true && state.password.length < 5
+              (isUnique === true && state.password.length < 5) || spinner
                 ? { opacity: "0.5" }
                 : { opacity: "1" }
             }
+            loader={
+              spinner && (
+                <div
+                  style={{ color: "#fff", position: "unset" }}
+                  className="spinner-border"
+                />
+              )
+            }
+          />
+        )}
+        {isUnique === true && (
+          <Button
+            type="button"
+            className="link-a"
+            text="Forget Password?"
+            style={{ float: "right" }}
           />
         )}
         {isUnique && state.email && (
           <Fragment>
-            <p className="center" style={{ fontSize: "15px", color: "gray" }}>
-              Don't have an account?
+            <Button
+              type="button"
+              className="linkBtn"
+              onClick={() =>
+                isUnique === false ? goLogin("signin") : goLogin("signup")
+              }
+              text={isUnique === false ? "Sign In" : "Go to Signup"}
+            />
+          </Fragment>
+        )}
+
+        {isUnique !== true && (
+          <Fragment>
+            <p
+              className="center"
+              style={{
+                fontSize: "15px",
+                color: "gray",
+                margin: 0,
+              }}
+            >
+              {isUnique === false ? "Have an account?" : "Go to social login?"}
               <Button
                 type="button"
                 className="linkBtn"
                 onClick={() =>
-                  isUnique === false ? goLogin("signin") : goLogin("signup")
+                  isUnique === false
+                    ? goLogin("signin")
+                    : props.history.push("/")
                 }
-                text={isUnique === false ? "Sign In" : "Sign Up"}
+                text={isUnique === false ? "Signin" : "Signup"}
               />
             </p>
+            {isUnique === null && (
+              <p style={{ margin: "0px", paddingTop: "15px" }}>
+                Not your computer? Use Guest mode to sign in privately.
+                <Button className="links" text="Learn more" />
+              </p>
+            )}
           </Fragment>
         )}
-
-        {!isUnique && (
-          <Fragment>
-            <Button
-              className="link-a"
-              onClick={() => props.history.push("/signin")}
-              text="Go to signin"
-              style={{ float: "left" }}
-            />
-            <Button
-              className="link-a"
-              text="Forget Password?"
-              style={{ float: "right" }}
-            />
-            <p style={{ marginTop: "50px" }}>
-              Not your computer? Use Guest mode to sign in privately.
-              <Button className="links" text="Learn more" />
-            </p>
-          </Fragment>
-        )}
+        <div className="sweet-loading"></div>
       </div>
     </form>
   );

@@ -31,10 +31,12 @@ const userSchema = new mongoose.Schema({
   photo: {
     type: String,
   },
-  posts: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Posts",
-  },
+  post: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Posts",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Users", userSchema);

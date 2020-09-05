@@ -1,51 +1,87 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { InstaProfile, Spinner, ViewPost, Menu } from "../../Components";
+import React, {
+  Fragment,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+} from "react";
+import { InstaProfile, ViewPost, Menu, Upload } from "../../Components";
 import axios from "axios";
+import moment from "moment";
 import "../Profile/Profile.css";
-
+import { AiOutlineEllipsis } from "react-icons/ai";
+import logoAvatar from "../../Images/logoAvatar.jpg";
 import { withStyles } from "@material-ui/core/styles";
 import { Dialog, Typography } from "@material-ui/core";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
+import decode from "jwt-decode";
 
 const Profile = (props) => {
   const [open, setOpen] = React.useState(false);
   const [postimage, setImage] = useState([]);
-  const [spinner, setSpinner] = useState(false);
+  const [spinner, setSpinner] = useState(true);
   const [viewImage, setView] = useState("");
-  const [userType, setUserType] = useState("");
-  useEffect(() => {
-    setSpinner(true);
+  const [userType, setUserType] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(20);
+  const [user, setUser] = useState();
+  const [hasMore, setHasMore] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const fetchData = () => {
     let userId;
-    let userType;
-    if (props.location.state) {
-      userId = props.location.state.user;
-      userType = props.location.state.userType;
+    if (props.match.params.user) {
+      userId = props.match.params.user;
+    } else {
+      alert("token");
+      userId = decode(localStorage.getItem("tokens")).id;
     }
+    setLoading(true);
     axios
       .get("http://localhost:9000/post/view-profile", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("tokens")}`,
           user: userId,
-          type: userType,
         },
       })
       .then((response) => {
+        console.log(response.data);
         setUserType("");
-        console.log(response);
-        setTimeout(() => {
-          setUserType(response.data.logged);
-          const feeds = response.data.message.sort(function (a, b) {
-            return new Date(b.postedTime) - new Date(a.postedTime);
-          });
-          setImage(feeds);
-          setSpinner(false);
-        }, 1000);
+        setUserType(response.data.logged);
+        const feeds = response.data.response.sort(function (a, b) {
+          return new Date(b.postedTime) - new Date(a.postedTime);
+        });
+        setImage(feeds);
+        setUser(response.data.user);
+        setHasMore(response.data.response.length > 0);
+        setLoading(false);
       })
       .catch((errors) => {
         console.log(errors.response);
       });
-  }, []);
+  };
+  useEffect(() => {
+    fetchData();
+  }, [props.match.params]);
+
+  const observer = useRef();
+  const lastBookElementRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          setSpinner(true);
+          setTimeout(() => {
+            setCurrentPage((prevPageNumber) => prevPageNumber + 1);
+            setSpinner(false);
+          }, 3000);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, hasMore]
+  );
 
   const styles = (theme) => ({
     root: {
@@ -79,6 +115,7 @@ const Profile = (props) => {
     setOpen(false);
   };
   const deletePost = (id, post) => {
+    setSpinner(true);
     axios
       .delete("http://localhost:9000/post/delete-post", {
         headers: {
@@ -89,81 +126,109 @@ const Profile = (props) => {
       })
       .then((response) => {
         console.log(response);
-        window.location.reload(false);
+        fetchData();
+        setView("");
+        setSpinner(false);
       })
       .catch((errors) => {
         console.log(errors.response);
       });
     handleClose();
   };
+  function getPostedTime(postedTime) {
+    const time = Math.round((new Date() - new Date(postedTime)) / 1000 / 60);
+    if (time < 1) {
+      return "Just now";
+    } else if (time < 60) {
+      return `${time} minutes ago`;
+    } else if (time >= 60 && time < 120) {
+      return `1 hour ago`;
+    } else if (time >= 120 && time < 1140) {
+      return `${Math.round(time / 60)} hours ago`;
+    } else if (time >= 1140 && time < 2280) {
+      return `Yesterday at ${moment(new Date(postedTime)).format("LT")}`;
+    } else if (time >= 2280 && time < 1140 * 7) {
+      return `${Math.round(time / 1140)} days ago`;
+    } else {
+      return `${moment(new Date(postedTime)).format("MMM DD")}`;
+    }
+  }
+  const indexOfLastPost = currentPage * postsPerPage;
+  const currentPosts = postimage.slice(0, indexOfLastPost);
   return (
-    <Fragment>
-      {viewImage ? (
-        <ViewPost
-          profileSrc={
-            viewImage.userImage
-              ? `http://localhost:9000/${viewImage.userImage}`
-              : "Image/logoAvatar.jpg"
-          }
-          profileName={viewImage.name}
-          imgSrc={`http://localhost:9000/${viewImage.photo}`}
-          caption={viewImage.text}
-          onClick={() => setView("")}
-        >
-          {window.innerWidth > 600 ? (
-            <Fragment>
-              <img
-                alt="Dot icon"
-                className="dotImg1"
-                src="Image/Icons/dot.jpg"
-                onClick={userType && handleClickOpen}
-              />
-              <Dialog
-                onClose={handleClose}
-                aria-labelledby="customized-dialog-title"
-                open={open}
-              >
-                <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-                  View Posted Image
-                </DialogTitle>
+    <div className="profile-post">
+      {viewImage && (
+        <div style={{ marginLeft: "10px" }}>
+          <ViewPost
+            profileSrc={
+              viewImage.userImage
+                ? `http://localhost:9000/${viewImage.userImage}`
+                : logoAvatar
+            }
+            profileName={viewImage.name}
+            imgSrc={`http://localhost:9000/${viewImage.photo}`}
+            caption={viewImage.text}
+            postedTime={getPostedTime(viewImage.time)}
+            onClick={() => setView("")}
+          >
+            {window.innerWidth > 600 ? (
+              <Fragment>
+                <AiOutlineEllipsis
+                  className="dotImg1"
+                  size="2rem"
+                  onClick={userType ? handleClickOpen : null}
+                />
+                <Dialog
+                  onClose={handleClose}
+                  aria-labelledby="customized-dialog-title"
+                  open={open}
+                >
+                  <DialogTitle
+                    id="customized-dialog-title"
+                    onClose={handleClose}
+                  >
+                    View Posted Image
+                  </DialogTitle>
 
-                <DialogContent dividers>
-                  <button
-                    onClick={() => deletePost(viewImage.id, viewImage.photo)}
-                    className="remove-profile"
-                  >
-                    Delete post
-                  </button>
-                </DialogContent>
-                <DialogContent dividers>
-                  <p
-                    onClick={handleClose}
-                    className="cancel-profile"
-                    style={{ color: "blue" }}
-                  >
-                    Edit Post
-                  </p>
-                </DialogContent>
-                <DialogContent dividers>
-                  <p onClick={handleClose} className="cancel-profile">
-                    Cancel
-                  </p>
-                </DialogContent>
-              </Dialog>
-            </Fragment>
-          ) : (
-            <Menu onClick={() => deletePost(viewImage.id, viewImage.photo)} />
-          )}
-        </ViewPost>
-      ) : (
+                  <DialogContent dividers>
+                    <p
+                      onClick={() => deletePost(viewImage.id, viewImage.photo)}
+                      className="remove-profile"
+                    >
+                      Delete post
+                    </p>
+                  </DialogContent>
+                  <DialogContent dividers>
+                    <p
+                      onClick={handleClose}
+                      className="cancel-profile"
+                      style={{ color: "blue" }}
+                    >
+                      Edit Post
+                    </p>
+                  </DialogContent>
+                  <DialogContent dividers>
+                    <p onClick={handleClose} className="cancel-profile">
+                      Cancel
+                    </p>
+                  </DialogContent>
+                </Dialog>
+              </Fragment>
+            ) : (
+              <Menu
+                type={userType}
+                onClick={() => deletePost(viewImage.id, viewImage.photo)}
+              />
+            )}
+          </ViewPost>
+        </div>
+      )}
+      {user && (
         <Fragment>
-          <div>
-            <InstaProfile
-              profileImage={postimage.length > 1 && postimage[0].user.photo}
-              type={userType}
-            />
+          <div className="navbar-divider">
+            <InstaProfile profileImage={user.photo} type={userType} />
             <header className="profile">
-              {postimage.length > 1 && postimage[0].user.firstName} <br />
+              {user.firstName} <br />
               <span>
                 <label>{postimage.length} posts</label>
                 <label>23.5k followers</label>
@@ -171,52 +236,63 @@ const Profile = (props) => {
               </span>
             </header>
           </div>
-          <div className="container-1">
-            {postimage.length > 0 ? (
-              postimage.map((image, index) => (
-                <div
-                  key={image.image + index}
-                  className="box-1"
-                  onClick={() =>
-                    setView({
-                      photo: image.image,
-                      text: image.caption,
-                      id: image._id,
-                      name: image.user.firstName,
-                      userImage: image.user.photo,
-                    })
-                  }
-                >
-                  <div className="overlayDiv">
-                    <div className="overlay" />
-                  </div>
-                  <div className="myImagess">
-                    <img
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                      src={`http://localhost:9000/${image.image}`}
-                      alt="img"
-                    />
-                  </div>
-                </div>
-              ))
-            ) : (
-              <Fragment>
-                <span className="nodata">
-                  <Spinner />
-                </span>
-                {!spinner && (
-                  <h3 className="nodata">There is no post available..!</h3>
-                )}
-              </Fragment>
-            )}
-          </div>
         </Fragment>
       )}
-    </Fragment>
+      <div className="container-1">
+        {postimage.length > 0 &&
+          currentPosts.map((image, index) => (
+            <div
+              ref={lastBookElementRef}
+              key={image.image + index}
+              className="box-1"
+              onClick={() =>
+                setView({
+                  photo: image.image,
+                  text: image.caption,
+                  id: image._id,
+                  name: image.user.firstName,
+                  userImage: image.user.photo,
+                  time: image.postedTime,
+                })
+              }
+            >
+              <div className="overlayDiv">
+                <div className="overlay" />
+              </div>
+              <div className="myImagess">
+                <img
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                  src={`http://localhost:9000/${image.image}`}
+                  alt="img"
+                />
+              </div>
+            </div>
+          ))}
+      </div>
+
+      {postimage.length < 1 && !spinner && (
+        <h3 className="nodata" style={{ color: "red", paddingTop: "30px" }}>
+          There is no post available..!
+        </h3>
+      )}
+
+      {spinner && (
+        <div
+          style={{
+            color: "gray",
+            position: "relative",
+            marginTop: "30px",
+            marginBottom: "30px",
+            display: "block",
+          }}
+          className="spinner-border"
+        />
+      )}
+    </div>
   );
 };
 

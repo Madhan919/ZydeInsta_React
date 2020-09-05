@@ -1,5 +1,4 @@
 import React from "react";
-
 const Button = (props) => {
   return (
     <button
@@ -9,6 +8,7 @@ const Button = (props) => {
       style={props.style}
     >
       {props.text}
+      {props.loader}
     </button>
   );
 };

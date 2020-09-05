@@ -1,24 +1,23 @@
 import React from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import { AiOutlineEllipsis } from "react-icons/ai";
 
 export default function SimpleMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    if (props.type) {
+      setAnchorEl(event.currentTarget);
+    }
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   return (
     <div>
-      <img
-        alt="Dot icon"
+      <AiOutlineEllipsis
         className="dotImg1"
-        src="Image/Icons/dot.jpg"
+        size="2rem"
         onClick={handleClick}
       />
       <Menu

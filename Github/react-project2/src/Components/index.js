@@ -9,6 +9,10 @@ import Upload from "./Upload";
 import ViewPost from "./ViewPost";
 import Icon from "./Icon";
 import Menu from "./Menu";
+import Pagination from "./Pagination";
+import useBookSearch from "./getFeeds";
+import Text from "./TextField";
+import EmailSignin from "./EmailSignin";
 
 export {
   Header,
@@ -22,4 +26,8 @@ export {
   ViewPost,
   Icon,
   Menu,
+  Pagination,
+  useBookSearch,
+  Text,
+  EmailSignin,
 };
