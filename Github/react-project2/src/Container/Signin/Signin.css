@@ -1,0 +1,156 @@
+.container1 {
+  background-color: #fff !important;
+  position: absolute;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  border-spacing: 1em;
+  padding: 60px;
+  width: 100% !important;
+  max-width: 400px;
+  min-width: 160px;
+  overflow: auto;
+  position: absolute;
+  top: 50%;
+  left: 49.4%;
+  transform: translate(-50%, -50%);
+}
+
+.container1-2 {
+  background-color: #fff !important;
+  position: absolute;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  border-spacing: 1em;
+  padding: 60px;
+  width: 100% !important;
+  min-width: 160px !important;
+  max-width: 400px !important;
+  overflow: auto;
+  position: absolute;
+  top: 50%;
+  left: 49.4%;
+  transform: translate(-50%, -50%);
+}
+.header2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.angularBtn {
+  position: absolute;
+  outline: none !important;
+  background: #fff;
+  margin-left: -38px;
+  margin-top: 8px;
+  border-color: #fff;
+  border: none;
+}
+.angularBtn-1 {
+  position: absolute;
+  outline: none !important;
+  background: #fff;
+  margin-left: -38px;
+  margin-top: 8px;
+  border-color: #fff;
+  border: none;
+}
+.showPassword,
+.showPassword-1 {
+  font-size: 14px;
+  font-weight: 600;
+  position: absolute;
+  margin-left: -60px;
+  margin-top: 11px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #fff;
+}
+.submit {
+  width: 100%;
+  max-width: 300px;
+  min-width: 150px;
+  height: 45px;
+  color: white;
+  background-color: #e86a6a;
+  font-weight: bold;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  margin-top: 0px;
+  max-width: -webkit-fill-available;
+}
+.link-a {
+  text-decoration: none;
+  position: relative;
+  padding-top: 10px;
+  color: blue;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.linkBtn {
+  border: none;
+  outline: none;
+  color: blue;
+  background-color: #fff;
+  font-size: 15px;
+  padding-top: 10px;
+}
+
+@media screen and (max-width: 999px) {
+  .container1,
+  .container1-2 {
+    width: 100% !important;
+    max-width: 400px !important;
+    min-width: 160px !important;
+    margin: 13% 0% !important;
+    top: 40.5% !important;
+    overflow: scroll;
+  }
+  .angularBtn {
+    position: relative;
+    outline: none !important;
+    background: #fff;
+    margin-top: -63px;
+    border-color: #fff;
+    border: none;
+    float: right;
+    right: 3px;
+  }
+  .angularBtn-1 {
+    position: relative;
+    outline: none !important;
+    background: #fff;
+    margin-top: -72px;
+    border-color: #fff;
+    border: none;
+    float: right;
+    right: 3px;
+  }
+  .showPassword,
+  .showPassword-1 {
+    margin-top: -60px;
+    float: right;
+    position: relative;
+    margin-right: 2px;
+  }
+  .showPassword-1 {
+    margin-top: -69px;
+  }
+  .submit {
+    width: 100% !important;
+    display: block !important;
+  }
+  .link-a {
+    display: block;
+    text-align: left;
+    margin-left: -6px;
+  }
+}
+@media only screen and (max-width: 1365px) and (min-width: 1000px) {
+}

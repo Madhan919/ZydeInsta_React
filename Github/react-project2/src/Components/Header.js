@@ -6,7 +6,6 @@ import { Button, Upload } from ".";
 import logo1 from "../../src/Images/logo1.png";
 import decode from "jwt-decode";
 const Header = (props) => {
-  const id = decode(localStorage.getItem("tokens")).id;
   useEffect(() => {
     if (!localStorage.getItem("tokens")) {
       props.history.push("/signin");
@@ -24,16 +23,33 @@ const Header = (props) => {
           <label className="navButtons">
             <Button
               className={
-                props.match.params.user !== "/feeds"
+                props.location &&
+                props.location.pathname ===
+                  `/profile/${
+                    localStorage.getItem("tokens") &&
+                    decode(localStorage.getItem("tokens")).id
+                  }`
                   ? "underline navBtn"
                   : "navBtn"
               }
-              onClick={(e) => props.history.push(`/profile/${id}`)}
+              onClick={(e) =>
+                props.history.push(
+                  `/profile/${
+                    localStorage.getItem("tokens") &&
+                    decode(localStorage.getItem("tokens")).id
+                  }`
+                )
+              }
               text="Profile"
             />
             <Button
               className={
-                props.location.pathname === "/feeds"
+                props.location &&
+                props.location.pathname !==
+                  `/profile/${
+                    localStorage.getItem("tokens") &&
+                    decode(localStorage.getItem("tokens")).id
+                  }`
                   ? "underline navBtn"
                   : "navBtn"
               }

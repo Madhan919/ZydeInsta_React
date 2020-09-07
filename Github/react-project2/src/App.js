@@ -2,8 +2,11 @@ import React from "react";
 import { Header } from "./Components";
 import { Signup, Signin, PrivateRoute, PublicRoute } from "./Container";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-// import "dotenv/config";
 import "./App.css";
+import "./Container/Signup/Signup.css";
+import "./Container/Signin/Signin.css";
+import "./Container/Profile/Profile.css";
+import "./Container/Feeds/Feeds.css";
 
 function App() {
   return (

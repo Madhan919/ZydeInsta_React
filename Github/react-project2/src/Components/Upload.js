@@ -35,7 +35,7 @@ const Upload = (props) => {
   const [url, setUrl] = useState("");
   const [caption, setValue] = useState();
   const [spinner, setSpinner] = useState();
-
+  const [state, setState] = useState();
   const handleChange = (event) => {
     setUrl(URL.createObjectURL(event.target.files[0]));
     setFile(event.target.files[0]);
@@ -53,14 +53,13 @@ const Upload = (props) => {
       })
       .then((response) => {
         console.log("response", response);
-        window.$name = response.data;
-        // window.location.reload(false);
+        setState(response.data);
+        handleClose();
         setSpinner(false);
       })
       .catch((errors) => {
         console.log(errors.error);
       });
-    handleClose();
   };
   const handleClickOpen = () => {
     setOpen(true);
@@ -71,7 +70,7 @@ const Upload = (props) => {
     setFile("");
   };
   return (
-    <div className="upload1">
+    <div className="upload1" state={state}>
       <FiCamera
         strokeWidth="1"
         size="1.8rem"
@@ -88,6 +87,12 @@ const Upload = (props) => {
         </DialogTitle>
 
         <DialogContent dividers>
+          {spinner && (
+            <div
+              className="spinner-border"
+              style={{ color: "#fff", top: "50%", position: "absolute" }}
+            />
+          )}
           {url.length > 0 && (
             <img alt="uploaded" className="uploadImage" src={url} />
           )}
@@ -125,7 +130,6 @@ const Upload = (props) => {
             text="Cancel"
           />
         </DialogContent>
-        {spinner && <div className="spinner-border" />}
       </Dialog>
     </div>
   );

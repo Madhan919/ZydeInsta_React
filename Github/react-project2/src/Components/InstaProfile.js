@@ -55,7 +55,6 @@ const InstaProfile = (props) => {
   };
   const handleChange = (event) => {
     const imageUrl = URL.createObjectURL(event.target.files[0]);
-    setUrl("");
     setLoader(true);
 
     setTimeout(() => {
@@ -95,10 +94,9 @@ const InstaProfile = (props) => {
         },
       })
       .then((response) => {
-        setProfile("");
         setUrl("");
+        setProfile("");
         console.log(response);
-        changeProfile();
         setLoader(false);
       })
       .catch((errors) => {
@@ -111,11 +109,11 @@ const InstaProfile = (props) => {
     <div>
       <ImageAvatars
         imageName={
-          loader && !url
+          loader
             ? spinner
-            : props.profileImage && !url
+            : !loader && !url && props.profileImage
             ? `http://localhost:9000/${props.profileImage}`
-            : url
+            : !loader && url && url
         }
         onClick={props.type === true ? handleClickOpen : null}
       />

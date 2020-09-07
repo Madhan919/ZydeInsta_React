@@ -24,19 +24,23 @@ const Profile = (props) => {
   const [viewImage, setView] = useState("");
   const [userType, setUserType] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(20);
+  const [postsPerPage] = useState(12);
   const [user, setUser] = useState();
   const [hasMore, setHasMore] = useState(false);
   const [loading, setLoading] = useState(true);
+  let userId;
   const fetchData = () => {
-    let userId;
-    if (props.match.params.user) {
-      userId = props.match.params.user;
-    } else {
-      alert("token");
-      userId = decode(localStorage.getItem("tokens")).id;
+    if (props.match.params) {
+      if (props.match.params.user) {
+        userId = props.match.params.user;
+      } else {
+        if (localStorage.getItem("tokens")) {
+          userId = decode(localStorage.getItem("tokens")).id;
+        }
+      }
     }
     setLoading(true);
+    setSpinner(true);
     axios
       .get("http://localhost:9000/post/view-profile", {
         headers: {
@@ -55,6 +59,8 @@ const Profile = (props) => {
         setUser(response.data.user);
         setHasMore(response.data.response.length > 0);
         setLoading(false);
+        setSpinner(false);
+        setView("");
       })
       .catch((errors) => {
         console.log(errors.response);
@@ -62,8 +68,7 @@ const Profile = (props) => {
   };
   useEffect(() => {
     fetchData();
-  }, [props.match.params]);
-
+  }, [props.match.params && props.match.params.user]);
   const observer = useRef();
   const lastBookElementRef = useCallback(
     (node) => {
@@ -126,9 +131,9 @@ const Profile = (props) => {
       })
       .then((response) => {
         console.log(response);
-        fetchData();
-        setView("");
-        setSpinner(false);
+        setTimeout(() => {
+          fetchData();
+        }, 3000);
       })
       .catch((errors) => {
         console.log(errors.response);
@@ -170,6 +175,19 @@ const Profile = (props) => {
             caption={viewImage.text}
             postedTime={getPostedTime(viewImage.time)}
             onClick={() => setView("")}
+            loader={
+              spinner && (
+                <div
+                  style={{
+                    color: "white",
+                    left: "46%",
+                    top: "50%",
+                    position: "absolute",
+                  }}
+                  className="spinner-border"
+                />
+              )
+            }
           >
             {window.innerWidth > 600 ? (
               <Fragment>
@@ -285,9 +303,7 @@ const Profile = (props) => {
           style={{
             color: "gray",
             position: "relative",
-            marginTop: "30px",
-            marginBottom: "30px",
-            display: "block",
+            left: "41.8%",
           }}
           className="spinner-border"
         />

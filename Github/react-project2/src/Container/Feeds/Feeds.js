@@ -52,7 +52,7 @@ const Feeds = (props) => {
   const indexOfLastPost = currentPage * postsPerPage;
   const currentPosts = feeds.slice(0, indexOfLastPost);
   return (
-    <Fragment>
+    <div style={{ marginTop: "30px" }}>
       {currentPosts.length > 0 &&
         currentPosts.map((image) => {
           return (
@@ -86,7 +86,7 @@ const Feeds = (props) => {
       {!spinner && feeds.length < 1 && (
         <h3 className="nodata">There is no post available..!</h3>
       )}
-    </Fragment>
+    </div>
   );
 };
 

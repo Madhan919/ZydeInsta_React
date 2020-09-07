@@ -1,0 +1,133 @@
+.image-root {
+  margin-left: 0;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  /* margin-top: 30px !important; */
+  margin: 0 20%;
+  margin-bottom: 30px;
+}
+.image-root1 {
+  margin-right: 0;
+  margin-left: 0;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  margin-top: 0px;
+}
+.desc {
+  padding-left: 30px;
+  margin-top: 0;
+}
+.title {
+  padding: 20px;
+}
+.title1 {
+  padding: 10px;
+}
+.desc1 {
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.profile-pic {
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  cursor: pointer;
+}
+.profileName {
+  margin-left: 62px;
+  margin-top: -45px;
+  padding-bottom: 40px;
+}
+.name {
+  font-size: 18px;
+  color: rgba(var(--f75, 38, 38, 38), 1);
+  padding-left: 20px;
+  margin-top: -4px;
+  position: absolute;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dotImg {
+  float: right;
+  margin-top: -30px;
+  cursor: pointer;
+}
+
+.timeCaption {
+  position: absolute;
+  margin-top: 22px;
+  margin-left: 21px;
+  font-size: 13px;
+}
+.postImage {
+  display: block;
+  width: 100%;
+  padding-bottom: 20px;
+}
+.postImage1 {
+  display: block;
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  background-color: black;
+}
+.timeCaption1 {
+  position: absolute;
+  margin-top: -22px;
+  margin-left: 116px;
+  font-size: 13px;
+}
+.feed-root {
+  background-color: rgba(var(--b3f, 250, 250, 250), 1);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+@media only screen and (max-width: 1365px) and (min-width: 1000px) {
+  .postImage1 {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 999px) {
+  .image-root {
+    margin-right: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+    border: none;
+    background-color: #fff;
+    margin-bottom: -17px;
+  }
+  .desc {
+    padding: 10px;
+  }
+  .name {
+    font-size: 14px;
+    margin-top: 1px;
+    display: inline-block;
+  }
+  .timeCaption {
+    position: absolute;
+    margin-top: 18px;
+    margin-left: 20px;
+    font-size: 12px;
+  }
+  .postImage1 {
+    height: 100%;
+  }
+  .postImage {
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .feed-root {
+    background-color: rgba(var(--b3f, 250, 250, 250), 1);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
+}

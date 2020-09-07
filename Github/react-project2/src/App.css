@@ -1,7 +1,3 @@
-/* .MuiOutlinedInput-root {
-  padding-right: 10px !important;
-} */
-
 .MuiFormControl-fullWidth {
   width: 100% !important;
   min-width: 150px !important;
@@ -50,30 +46,11 @@ button {
 .navMenu {
   float: right;
 }
-.timeCaption1 {
-  position: absolute;
-  margin-top: -22px;
-  margin-left: 116px;
-  font-size: 13px;
-}
+
 .profile-post {
   margin-left: 14%;
 }
-.desc1 {
-  text-align: left;
-  padding-left: 10px;
-  padding-top: 10px;
-}
-.postImage1 {
-  display: block;
-  width: 100%;
-  height: 420px;
-  object-fit: contain;
-  background-color: black;
-}
-.title1 {
-  padding: 10px;
-}
+
 .back1 {
   float: left;
   margin-top: 11px;
@@ -114,18 +91,6 @@ button {
   cursor: pointer;
 }
 
-.showPassword,
-.showPassword-1 {
-  font-size: 14px;
-  font-weight: 600;
-  position: absolute;
-  margin-left: -60px;
-  margin-top: 11px;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background-color: #fff;
-}
 .nodata {
   position: fixed;
   top: 50%;
@@ -249,15 +214,7 @@ button {
   margin: 0;
   cursor: pointer;
 }
-.links {
-  background-color: #fff;
-  border: none;
-  outline: none;
-  color: blue;
-  display: inline;
-  text-indent: 0;
-  font-size: 13px;
-}
+
 .textfield {
   color: gray;
   width: 400px;
@@ -351,20 +308,7 @@ button {
   justify-items: center;
   width: 320px;
 }
-.container {
-  background-color: #fff !important;
-  position: absolute;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  border-spacing: 1em;
-  padding: 60px;
-  width: 30% !important;
-  overflow: auto;
-  position: absolute;
-  top: 50%;
-  left: 49.4%;
-  transform: translate(-50%, -50%);
-}
+
 /* .container1 {
   background-color: #fff !important;
   position: relative;
@@ -384,47 +328,7 @@ button {
   padding: 12.5px 14px !important;
   padding-right: 50px !important;
 }
-.container1 {
-  background-color: #fff !important;
-  position: absolute;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  border-spacing: 1em;
-  padding: 60px;
-  width: 100% !important;
-  max-width: 400px;
-  min-width: 160px;
-  overflow: auto;
-  position: absolute;
-  top: 50%;
-  left: 49.4%;
-  transform: translate(-50%, -50%);
-}
 
-.container1-2 {
-  background-color: #fff !important;
-  position: absolute;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  border-spacing: 1em;
-  padding: 60px;
-  width: 100% !important;
-  min-width: 160px !important;
-  max-width: 400px !important;
-  /* vertical-align: middle; */
-  overflow: auto;
-  position: absolute;
-  top: 50%;
-  left: 49.4%;
-  transform: translate(-50%, -50%);
-  /* top: 50%;
-  left: 50%;
-  margin: -25px 0 0 -25px; */
-  /* display: inline-block; */
-  /* justify-content: center; */
-  /* top: 120px !important; */
-  /* display: inline-block; */
-}
 .containers1 {
   background-color: #fff !important;
   position: fixed;
@@ -474,12 +378,7 @@ button {
   padding-bottom: 12px;
   color: darkgrey;
 }
-.header2 {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  padding-bottom: 30px;
-}
+
 .image1 {
   width: 20px;
   height: 20px;
@@ -500,42 +399,7 @@ button {
   vertical-align: middle;
   float: left;
 }
-.google {
-  font-family: Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  font-weight: bold !important;
-  font-size: 17px !important;
-  text-align: center !important;
-  display: block;
-  background-color: #fff;
-  width: 300px;
-  border: 1px solid #e0e0e0;
-  padding: 5px;
-  outline: none;
-  border-radius: 4px;
-  margin-bottom: 30px;
-  cursor: pointer;
-  height: 58px;
-  color: rgba(0, 0, 0, 0.54);
-  max-width: -webkit-fill-available;
-}
-.gmail {
-  font-size: calc(0.27548vw + 12.71074px);
-  display: block;
-  background-color: #de1414;
-  width: 300px;
-  border: 1px solid #e0e0e0;
-  /* padding: calc(0.34435vw + 13.38843px) calc(0.34435vw + 18.38843px); */
-  outline: none;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #fff;
-  font-weight: bold;
-  height: 58px;
-  border-radius: 5px;
-  max-width: -webkit-fill-available;
-  padding: 10px;
-}
+
 .facebook {
   font-size: 20px;
   display: block;
@@ -571,20 +435,7 @@ button {
   min-width: 150px;
   height: 45px;
 }
-.submit {
-  width: 100%;
-  max-width: 300px;
-  min-width: 150px;
-  height: 45px;
-  color: white;
-  background-color: #e86a6a;
-  font-weight: bold;
-  outline: none;
-  border-radius: 5px;
-  border: 1px solid #e0e0e0;
-  margin-top: 0px;
-  max-width: -webkit-fill-available;
-}
+
 .kep-login-facebook {
   font-family: Helvetica, sans-serif;
   font-weight: 700;
@@ -603,50 +454,12 @@ button {
   border-radius: 5px !important;
   max-width: -webkit-fill-available;
 }
-.angularBtn {
-  position: absolute;
-  outline: none !important;
-  background: #fff;
-  margin-left: -38px;
-  margin-top: 8px;
-  border-color: #fff;
-  border: none;
-}
-.angularBtn-1 {
-  position: absolute;
-  outline: none !important;
-  background: #fff;
-  margin-left: -38px;
-  margin-top: 8px;
-  border-color: #fff;
-  border: none;
-}
+
 .MuiFormHelperText-root.Mui-error {
   color: #f44336;
   margin-top: -20px;
 }
-.link {
-  text-decoration: none;
-  color: blue;
-  outline: none;
-  border: none;
-  background-color: #fff;
-  font-size: 15px;
-  cursor: pointer;
-  margin-bottom: 0;
-}
-.link-a {
-  text-decoration: none;
-  position: relative;
-  padding-top: 10px;
-  color: blue;
-  outline: none;
-  border: none;
-  background-color: #fff;
-  font-size: 15px;
-  cursor: pointer;
-  margin-bottom: 0;
-}
+
 .link2 {
   text-decoration: none;
   color: blue;
@@ -660,31 +473,7 @@ a {
   font-weight: 400;
   font-size: 16px;
 }
-.signupTxt {
-  font-weight: 700;
-  opacity: 0.7;
-  text-align: center;
-  font-size: 17px;
-  color: gray;
-}
-.terms {
-  font-size: 14px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  text-indent: 6px;
-  text-align: left;
-}
-.account {
-  font-size: 14px;
-  text-align: center !important;
-  margin-top: 15px;
-}
-.logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 120px;
-}
+
 .logo-icon {
   display: block;
   margin-left: auto;
@@ -799,14 +588,7 @@ a {
 .MuiFormHelperText-contained {
   margin-bottom: 10px !important;
 }
-.linkBtn {
-  border: none;
-  outline: none;
-  color: blue;
-  background-color: #fff;
-  font-size: 15px;
-  padding-top: 10px;
-}
+
 .profile {
   margin-top: -135px;
   font-size: 25px;
@@ -860,12 +642,7 @@ a {
   border-radius: 50%;
   justify-content: center;
 }
-.feed-root {
-  background-color: rgba(var(--b3f, 250, 250, 250), 1);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-}
+
 .container4 {
   position: fixed;
   height: 100%;
@@ -877,29 +654,6 @@ a {
   position: fixed;
   padding-bottom: 100px;
 }
-.image-root {
-  margin-left: 0;
-  border: 1px solid #e0e0e0;
-  background-color: #fff;
-  margin-top: 30px !important;
-  margin: 0 20%;
-}
-.image-root1 {
-  margin-right: 0;
-  margin-left: 0;
-  border: 1px solid #e0e0e0;
-  background-color: #fff;
-  margin-top: 0px;
-}
-.desc {
-  padding-left: 30px;
-  margin-top: 0;
-}
-.postImage {
-  display: block;
-  width: 100%;
-  padding-bottom: 20px;
-}
 
 .logoAvatar {
   width: 40px;
@@ -908,50 +662,13 @@ a {
   cursor: pointer;
   vertical-align: middle;
 }
-.profileName {
-  margin-left: 62px;
-  margin-top: -45px;
-  padding-bottom: 40px;
-}
+
 .image-cropper {
   width: 50px;
   height: 50px;
   position: relative;
   overflow: hidden;
   border-radius: 50%;
-}
-.profile-pic {
-  display: inline-block;
-  margin: 0 auto;
-  width: 100%;
-  object-fit: cover;
-  height: 100%;
-  cursor: pointer;
-}
-.title {
-  padding: 20px;
-}
-.name {
-  font-size: 18px;
-  color: rgba(var(--f75, 38, 38, 38), 1);
-  padding-left: 20px;
-  margin-top: -4px;
-  position: absolute;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.dotImg {
-  float: right;
-  margin-top: -30px;
-  cursor: pointer;
-}
-
-.timeCaption {
-  position: absolute;
-  margin-top: 22px;
-  margin-left: 21px;
-  font-size: 13px;
 }
 .navBtn {
   outline: none !important;
@@ -970,63 +687,6 @@ a {
   float: right;
   margin-right: 260px;
 }
-
-@media only screen and (max-width: 1365px) and (min-width: 1000px) {
-  /* .pagination .nav {
-    display: block;
-    margin-left: 1% !important;
-    margin-top: 15px !important;
-  } */
-  .overlayDiv {
-    display: none;
-  }
-  .textClass {
-    display: block;
-  }
-  .gmail {
-    padding: 0px !important;
-    height: 100%;
-  }
-  .myImagess {
-    width: 100%;
-    height: 300px;
-  }
-  .profile-post {
-    margin-left: 0;
-  }
-  .logo1 {
-    margin-left: 20%;
-  }
-  .navButtons {
-    margin-right: 0px;
-  }
-  .container-1 {
-    display: flex;
-    margin-right: 0;
-    padding-bottom: 0px;
-  }
-  .profile-post {
-    margin-left: 14%;
-  }
-  .navMenu {
-    float: right;
-    margin-right: 20%;
-  }
-  .postImage1 {
-    height: 200px;
-  }
-  .imageWidth {
-    width: 500px;
-  }
-  .container {
-    width: 40% !important;
-    text-align: center;
-  }
-  .gmailImg {
-    margin-top: 2px;
-  }
-}
-
 @media screen and (max-width: 999px) {
   .textClass {
     display: block;
@@ -1046,9 +706,7 @@ a {
   .profile-post {
     margin-left: 0;
   }
-  .postImage1 {
-    height: 100%;
-  }
+
   .navbar-divider {
     margin-right: 0px;
     margin-bottom: 5px;
@@ -1066,16 +724,7 @@ a {
     height: 130px !important;
     cursor: pointer !important;
   }
-  .showPassword,
-  .showPassword-1 {
-    margin-top: -60px;
-    float: right;
-    position: relative;
-    margin-right: 2px;
-  }
-  .showPassword-1 {
-    margin-top: -69px;
-  }
+
   .chooseImage {
     margin-top: 75px;
   }
@@ -1137,43 +786,14 @@ a {
     font-size: 15px;
     cursor: pointer;
   }
-  .angularBtn {
-    position: relative;
-    outline: none !important;
-    background: #fff;
-    margin-top: -63px;
-    border-color: #fff;
-    border: none;
-    float: right;
-    right: 3px;
-  }
-  .angularBtn-1 {
-    position: relative;
-    outline: none !important;
-    background: #fff;
-    margin-top: -72px;
-    border-color: #fff;
-    border: none;
-    float: right;
-    right: 3px;
-  }
-  .link-a {
-    display: block;
-    text-align: left;
-    margin-left: -6px;
-  }
 
   .myUpload {
     display: inline;
   }
-  .account {
-    font-size: 12px;
-    text-align: center !important;
-    margin-top: 10px;
-  }
+
   .container-1 {
     margin-right: 5px;
-    justify-content: center;
+    justify-content: normal;
     overflow: auto;
     padding-bottom: 65px;
   }
@@ -1238,32 +858,7 @@ a {
     padding: 0;
     padding-bottom: 100px;
   }
-  .desc {
-    /* padding: 0px;
-    margin-left: 10px;
-    margin-top: 7px; */
-    padding: 10px;
-  }
-  .postImage {
-    display: block;
-    width: 100%;
-    padding-bottom: 10px;
-  }
-  .feed-root {
-    background-color: rgba(var(--b3f, 250, 250, 250), 1);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-  }
-  .image-root {
-    margin-right: 0px;
-    padding-bottom: 0px;
-    margin: 0px;
-    border: none;
-    background-color: #fff;
-    margin-bottom: -17px;
-    /* width: 100%; */
-  }
+
   .profile {
     margin-top: -95px;
     font-size: 17px;
@@ -1284,17 +879,7 @@ a {
     margin-bottom: -6px;
     width: 85px;
   }
-  .name {
-    font-size: 14px;
-    margin-top: 1px;
-    display: inline-block;
-  }
-  .timeCaption {
-    position: absolute;
-    margin-top: 18px;
-    margin-left: 20px;
-    font-size: 12px;
-  }
+
   .MuiTextField-root {
     display: block !important;
     width: 100% !important;
@@ -1306,56 +891,11 @@ a {
   /* .MuiOutlinedInput-input {
     padding: 12.5px 34px !important;
   } */
-  .submit {
-    width: 100% !important;
-    display: block !important;
-  }
-  .container1,
-  .container1-2 {
-    width: 100% !important;
-    max-width: 400px !important;
-    min-width: 160px !important;
-    margin: 13% 0% !important;
-    top: 40.5% !important;
-    overflow: scroll;
-  }
-  .container {
-    /* width: 60% !important;
-    overflow: auto !important;
-    margin: 10% 1% !important; */
-    width: 90% !important;
-    overflow: auto !important;
-    margin: 10% 1% !important;
-    max-width: 450px;
-  }
-  .buttonDiv {
-    text-align: center;
-  }
+
   .gmaiBtn {
     text-align: center;
   }
-  .gmail {
-    display: inline-block;
-    width: 100%;
-    height: 10%;
-    font-size: 12px !important;
-    padding: 0px !important;
-  }
-  .terms {
-    font-size: 14px;
-    text-align: left;
-  }
-  .google {
-    display: inline-block;
-    width: 100%;
-    height: 10%;
-    font-weight: 900 !important;
-    text-align: center;
-    font-size: 13px !important;
-  }
-  .link {
-    display: inline-block;
-  }
+
   .kep-login-facebook {
     display: flex-inline;
     width: 100% !important;
@@ -1398,5 +938,47 @@ a {
   }
   .imageWrap {
     display: none;
+  }
+}
+@media only screen and (max-width: 1365px) and (min-width: 1000px) {
+  .overlayDiv {
+    display: none;
+  }
+  .textClass {
+    display: block;
+  }
+
+  .myImagess {
+    width: 100%;
+    height: 300px;
+  }
+  .profile-post {
+    margin-left: 0;
+  }
+  .logo1 {
+    margin-left: 20%;
+  }
+  .navButtons {
+    margin-right: 0px;
+  }
+  .container-1 {
+    display: flex;
+    margin-right: 0;
+    padding-bottom: 0px;
+  }
+  .profile-post {
+    margin-left: 14%;
+  }
+  .navMenu {
+    float: right;
+    margin-right: 20%;
+  }
+
+  .imageWidth {
+    width: 500px;
+  }
+
+  .gmailImg {
+    margin-top: 2px;
   }
 }
