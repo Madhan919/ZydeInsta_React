@@ -9,7 +9,7 @@
   overflow: auto;
   position: absolute;
   top: 50%;
-  left: 49.4%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 .logo {
@@ -95,7 +95,7 @@
   .container {
     width: 90% !important;
     overflow: auto !important;
-    margin: 10% 1% !important;
+    /* margin: 10% 1% !important; */
     max-width: 450px;
   }
   .buttonDiv {

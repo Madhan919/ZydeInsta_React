@@ -1,31 +1,50 @@
-import React, { Fragment, useState, useRef, useCallback } from "react";
-import { InstaPost, useBookSearch } from "../../Components";
+import React, { useState, useRef, useCallback, useEffect } from "react";
+import { InstaPost } from "../../Components";
 import moment from "moment";
+import axios from "axios";
 
 const Feeds = (props) => {
+  const [feeds, setFeeds] = useState([]);
   const [spinner, setSpinner] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(6);
-  const { loading, feeds, hasMore } = useBookSearch(
-    "http://localhost:9000/post/feeds"
-  );
+  const [postsPerPage] = useState(20);
+  useEffect(() => {
+    setSpinner(true);
+    axios({
+      method: "GET",
+      url: "http://localhost:9000/post/feeds",
+      headers: { Authorization: `Bearer ${localStorage.getItem("tokens")}` },
+    })
+      .then((response) => {
+        const feeds = response.data.response.sort(function (a, b) {
+          return new Date(b.postedTime) - new Date(a.postedTime);
+        });
+        setFeeds(feeds);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [props.location.state]);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const currentPosts = feeds.slice(0, indexOfLastPost);
   const observer = useRef();
-  const lastBookElementRef = useCallback(
+  const lastFeedsRef = useCallback(
     (node) => {
-      if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          setSpinner(true);
-          setTimeout(() => {
-            setCurrentPage((prevPageNumber) => prevPageNumber + 1);
-            setSpinner(false);
-          }, 3000);
+        if (entries[0].isIntersecting && currentPosts) {
+          if (currentPage <= Math.round(feeds.length / postsPerPage)) {
+            setSpinner(true);
+            setTimeout(() => {
+              setCurrentPage((prevPageNumber) => prevPageNumber + 1);
+              setSpinner(false);
+            }, 2000);
+          }
         }
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore]
+    [currentPosts]
   );
 
   function getPostedTime(postedTime) {
@@ -49,14 +68,12 @@ const Feeds = (props) => {
   const goProfile = (user) => {
     props.history.push(`/profile/${user}`);
   };
-  const indexOfLastPost = currentPage * postsPerPage;
-  const currentPosts = feeds.slice(0, indexOfLastPost);
   return (
-    <div style={{ marginTop: "30px" }}>
+    <div style={{ marginTop: "15px" }}>
       {currentPosts.length > 0 &&
         currentPosts.map((image) => {
           return (
-            <div ref={lastBookElementRef} key={image._id}>
+            <div ref={lastFeedsRef} key={image._id}>
               <InstaPost
                 profileSrc={
                   image.user.photo

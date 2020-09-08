@@ -19,7 +19,7 @@ router.patch(
   "/change-profile",
   checkAuth,
   upload.single("photo"),
-  (req, res, next) => {
+  (req, res) => {
     Users.findOneAndUpdate(
       { email: req.userData.email },
       { photo: req.file.filename }
@@ -33,7 +33,7 @@ router.patch(
   }
 );
 
-router.delete("/remove-profile", checkAuth, (req, res, next) => {
+router.delete("/remove-profile", checkAuth, (req, res) => {
   Users.findOneAndUpdate({ email: req.userData.email }, { photo: null })
     .then((response) => {
       fs.unlinkSync("post/" + req.headers.photo);
@@ -48,7 +48,7 @@ router.delete("/remove-profile", checkAuth, (req, res, next) => {
     });
 });
 
-router.get("/change-profile", checkAuth, (req, res, next) => {
+router.get("/change-profile", checkAuth, (req, res) => {
   Users.findOne({ email: req.userData.email })
     .then((response) => {
       res.status(200).json({ status: 200, response: response });
@@ -58,7 +58,7 @@ router.get("/change-profile", checkAuth, (req, res, next) => {
     });
 });
 
-router.post("/", checkAuth, upload.single("image"), (req, res, next) => {
+router.post("/", checkAuth, upload.single("image"), (req, res) => {
   Posts.create({
     caption: req.headers.caption,
     image: req.file.filename,
@@ -71,7 +71,7 @@ router.post("/", checkAuth, upload.single("image"), (req, res, next) => {
       res.status(400).json({ status: 400, message: error });
     });
 });
-router.get("/view-profile", checkAuth, (req, res, next) => {
+router.get("/view-profile", checkAuth, (req, res) => {
   let userId;
   let loggedUser = false;
   if (
@@ -106,7 +106,7 @@ router.get("/view-profile", checkAuth, (req, res, next) => {
     });
 });
 
-router.get("/feeds", checkAuth, (req, res, next) => {
+router.get("/feeds", checkAuth, (req, res) => {
   Posts.find()
     .populate("user")
     .then((response) => {
@@ -117,7 +117,7 @@ router.get("/feeds", checkAuth, (req, res, next) => {
     });
 });
 
-router.delete("/delete-post", checkAuth, (req, res, next) => {
+router.delete("/delete-post", checkAuth, (req, res) => {
   Posts.findByIdAndDelete(req.headers.id)
     .then((response) => {
       fs.unlinkSync("post/" + req.headers.image);

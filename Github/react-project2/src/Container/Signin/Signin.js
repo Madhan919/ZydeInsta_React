@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { AiOutlineRight } from "react-icons/ai";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, Spinner, Text } from "../../Components";
+import { Button } from "../../Components";
 import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -226,6 +226,7 @@ const Signin = (props) => {
                 setState({ ...state, firstName: event.target.value.trim() })
               }
               fullWidth={true}
+              className={isUnique !== null && "text-field"}
             />
             <TextField
               name="lastName"

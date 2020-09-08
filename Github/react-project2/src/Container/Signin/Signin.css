@@ -67,6 +67,7 @@
   border: none;
   background-color: #fff;
 }
+
 .submit {
   width: 100%;
   max-width: 300px;
@@ -132,15 +133,17 @@
     float: right;
     right: 3px;
   }
-  .showPassword,
-  .showPassword-1 {
+  .showPassword {
     margin-top: -60px;
     float: right;
     position: relative;
     margin-right: 2px;
   }
   .showPassword-1 {
-    margin-top: -69px;
+    float: right;
+    position: relative;
+    margin-right: 2px;
+    margin-top: -69px !important;
   }
   .submit {
     width: 100% !important;

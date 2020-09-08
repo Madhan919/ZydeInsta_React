@@ -276,7 +276,7 @@ button {
 .container-1 {
   display: flex;
   margin-right: 14%;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 .pagination .nav {
   margin-left: -1% !important;
@@ -795,7 +795,7 @@ a {
     margin-right: 5px;
     justify-content: normal;
     overflow: auto;
-    padding-bottom: 65px;
+    padding-bottom: 30px;
   }
 
   .divIn {
@@ -831,14 +831,6 @@ a {
     padding-bottom: 20px;
     margin-left: -20px;
   }
-  /* .post2
-    {
-      width: 80px;
-      height: 120px;
-      padding-left: 10px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-    } */
   .flex-container {
     height: 100%;
     display: flex;
@@ -856,7 +848,7 @@ a {
     overflow: auto;
     margin-left: 0;
     padding: 0;
-    padding-bottom: 100px;
+    padding-bottom: 70px;
   }
 
   .profile {
@@ -891,6 +883,13 @@ a {
   /* .MuiOutlinedInput-input {
     padding: 12.5px 34px !important;
   } */
+  .MuiOutlinedInput-input {
+    padding-left: 14px !important;
+    padding-right: 69px !important;
+    padding-top: 10px !important;
+    padding-bottom: 15px !important;
+    width: -webkit-fill-available !important;
+  }
 
   .gmaiBtn {
     text-align: center;
@@ -964,7 +963,7 @@ a {
   .container-1 {
     display: flex;
     margin-right: 0;
-    padding-bottom: 0px;
+    padding-bottom: 40px;
   }
   .profile-post {
     margin-left: 14%;

@@ -179,7 +179,7 @@ function facebookLogin(req, res) {
       res.status(400).json({ status: 400, message: err });
     });
 }
-router.post("/social-login", (req, res, next) => {
+router.post("/social-login", (req, res) => {
   if (req.body.loginType === "facebook") {
     facebookLogin(req, res);
   } else {
@@ -211,7 +211,7 @@ router.get("/check-email", (req, res) => {
     });
 });
 
-router.get("/signin", (req, res, next) => {
+router.get("/signin", (req, res) => {
   Users.findOne({
     email: req.headers.email,
   })
@@ -241,7 +241,7 @@ router.get("/signin", (req, res, next) => {
     });
 });
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup", (req, res) => {
   Users.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,

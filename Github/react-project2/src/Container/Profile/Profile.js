@@ -5,7 +5,7 @@ import React, {
   useRef,
   useCallback,
 } from "react";
-import { InstaProfile, ViewPost, Menu, Upload } from "../../Components";
+import { InstaProfile, ViewPost, Menu } from "../../Components";
 import axios from "axios";
 import moment from "moment";
 import "../Profile/Profile.css";
@@ -26,8 +26,6 @@ const Profile = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(12);
   const [user, setUser] = useState();
-  const [hasMore, setHasMore] = useState(false);
-  const [loading, setLoading] = useState(true);
   let userId;
   const fetchData = () => {
     if (props.match.params) {
@@ -39,7 +37,6 @@ const Profile = (props) => {
         }
       }
     }
-    setLoading(true);
     setSpinner(true);
     axios
       .get("http://localhost:9000/post/view-profile", {
@@ -57,8 +54,6 @@ const Profile = (props) => {
         });
         setImage(feeds);
         setUser(response.data.user);
-        setHasMore(response.data.response.length > 0);
-        setLoading(false);
         setSpinner(false);
         setView("");
       })
@@ -66,26 +61,32 @@ const Profile = (props) => {
         console.log(errors.response);
       });
   };
+  const indexOfLastPost = currentPage * postsPerPage;
+  const currentPosts = postimage.slice(0, indexOfLastPost);
   useEffect(() => {
+    console.log(props);
     fetchData();
-  }, [props.match.params && props.match.params.user]);
+  }, [props.location.state, props.match.params && props.match.params.user]);
   const observer = useRef();
   const lastBookElementRef = useCallback(
     (node) => {
-      if (loading) return;
-      if (observer.current) observer.current.disconnect();
+      if (observer.current) {
+        observer.current.disconnect();
+      }
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          setSpinner(true);
-          setTimeout(() => {
-            setCurrentPage((prevPageNumber) => prevPageNumber + 1);
-            setSpinner(false);
-          }, 3000);
+        if (entries[0].isIntersecting) {
+          if (currentPage <= Math.round(postimage.length / postsPerPage)) {
+            setSpinner(true);
+            setTimeout(() => {
+              setCurrentPage((prevPageNumber) => prevPageNumber + 1);
+              setSpinner(false);
+            }, 3000);
+          }
         }
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore]
+    [currentPosts]
   );
 
   const styles = (theme) => ({
@@ -158,8 +159,6 @@ const Profile = (props) => {
       return `${moment(new Date(postedTime)).format("MMM DD")}`;
     }
   }
-  const indexOfLastPost = currentPage * postsPerPage;
-  const currentPosts = postimage.slice(0, indexOfLastPost);
   return (
     <div className="profile-post">
       {viewImage && (
@@ -180,8 +179,8 @@ const Profile = (props) => {
                 <div
                   style={{
                     color: "white",
-                    left: "46%",
                     top: "50%",
+                    left: "50%",
                     position: "absolute",
                   }}
                   className="spinner-border"
@@ -260,6 +259,7 @@ const Profile = (props) => {
         {postimage.length > 0 &&
           currentPosts.map((image, index) => (
             <div
+              id={index}
               ref={lastBookElementRef}
               key={image.image + index}
               className="box-1"
@@ -303,7 +303,7 @@ const Profile = (props) => {
           style={{
             color: "gray",
             position: "relative",
-            left: "41.8%",
+            paddingTop: "10px",
           }}
           className="spinner-border"
         />
