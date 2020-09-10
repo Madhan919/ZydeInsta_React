@@ -115,7 +115,7 @@ const InstaProfile = (props) => {
             ? `http://localhost:9000/${props.profileImage}`
             : !loader && url && url
         }
-        onClick={props.type === true ? handleClickOpen : null}
+        onClick={props.type === true && handleClickOpen}
       />
       <Dialog
         onClose={handleClose}

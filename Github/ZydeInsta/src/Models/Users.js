@@ -37,6 +37,16 @@ const userSchema = new mongoose.Schema({
       ref: "Posts",
     },
   ],
+  follower: [
+    {
+      type: String,
+    },
+  ],
+  following: [
+    {
+      type: String,
+    },
+  ],
 });
 
 module.exports = mongoose.model("Users", userSchema);

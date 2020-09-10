@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from "react";
 import { InstaPost } from "../../Components";
 import moment from "moment";
 import axios from "axios";
+import Avatar from "@material-ui/core/Avatar";
 
 const Feeds = (props) => {
   const [feeds, setFeeds] = useState([]);

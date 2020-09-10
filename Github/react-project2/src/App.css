@@ -1,3 +1,15 @@
+.kep-login-facebook {
+  padding: 0 !important;
+  font-size: 15px !important;
+}
+.google span {
+  font-weight: bold !important;
+  padding: 0 !important;
+}
+.vertical_center {
+  display: flex;
+  align-items: center;
+}
 .MuiFormControl-fullWidth {
   width: 100% !important;
   min-width: 150px !important;
@@ -129,7 +141,7 @@ button {
 .overlay {
   position: absolute;
   width: 300px;
-  height: 350px;
+  height: 300px;
   margin-top: 0px;
   transition: 0.5s ease;
   background: rgba(0, 0, 0, 0.3);
@@ -296,7 +308,7 @@ button {
 }
 .myImagess {
   width: 300px;
-  height: 350px;
+  height: 300px;
   object-fit: cover;
 }
 .MuiAvatar-img {
@@ -308,27 +320,10 @@ button {
   justify-items: center;
   width: 320px;
 }
-
-/* .container1 {
-  background-color: #fff !important;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  -ms-transform: translate(-50%, -50%);
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  border-spacing: 1em;
-  padding: 20px 40px 20px 40px;
-  width: 300px !important;
-  vertical-align: middle;
-  overflow: auto;
-  top: 30px !important;
-} */
 .MuiOutlinedInput-input {
   padding: 12.5px 14px !important;
   padding-right: 50px !important;
 }
-
 .containers1 {
   background-color: #fff !important;
   position: fixed;
@@ -412,6 +407,7 @@ button {
   margin-bottom: 30px;
   cursor: pointer;
   max-width: -webkit-fill-available;
+  height: 48px;
 }
 .text {
   margin-top: 10px;
@@ -449,17 +445,15 @@ button {
   transition: background-color 0.3s, border-color 0.3s;
   background-color: #4c69ba;
   border: calc(0.06887vw + 0.67769px) solid #4c69ba;
-  padding: calc(0.34435vw + 13.38843px) calc(0.34435vw + 18.38843px);
   width: 300px;
   border-radius: 5px !important;
   max-width: -webkit-fill-available;
+  height: 48px;
 }
-
 .MuiFormHelperText-root.Mui-error {
   color: #f44336;
   margin-top: -20px;
 }
-
 .link2 {
   text-decoration: none;
   color: blue;
@@ -480,7 +474,6 @@ a {
   margin-right: auto;
   width: 30%;
 }
-
 .space {
   flex: 1;
 }
@@ -505,7 +498,6 @@ a {
   margin-left: auto;
   margin-right: auto;
   width: 300px;
-  /* width: 100%; */
   height: 350px;
   padding-bottom: 20px;
   padding-right: 20px;
@@ -538,10 +530,8 @@ a {
 
 /***********/
 .innerDiv {
-  /* margin-left: 200px; */
   margin-left: 14%;
 }
-
 .spinner {
   display: block;
   margin-left: 48%;
@@ -590,11 +580,9 @@ a {
 }
 
 .profile {
-  margin-top: -135px;
   font-size: 25px;
   color: gray;
-  position: absolute;
-  margin-left: 320px;
+  margin-left: 100px;
 }
 .profile label {
   font-size: 16px;
@@ -608,7 +596,6 @@ a {
   position: absolute;
   margin-top: 5px;
 }
-
 .flex {
   display: inline;
   position: absolute;
@@ -654,7 +641,6 @@ a {
   position: fixed;
   padding-bottom: 100px;
 }
-
 .logoAvatar {
   width: 40px;
   height: 40px;
@@ -662,7 +648,6 @@ a {
   cursor: pointer;
   vertical-align: middle;
 }
-
 .image-cropper {
   width: 50px;
   height: 50px;
@@ -729,46 +714,44 @@ a {
     margin-top: 75px;
   }
   .MuiDialog-paperWidthSm {
-    max-width: 600px !important;
+    max-width: 500px !important;
+    width: 100%;
   }
   .imageUpload {
-    width: 250px;
-    height: 150px;
+    max-width: 500px !important;
+    width: 100%;
+    height: 200px;
     border: solid 1px #e0e0e0;
-    margin-left: 20px;
+    margin-left: 0px;
   }
   .uploadImage {
-    height: 250px;
-    display: block;
-    margin-left: 20px;
-    margin-right: 20px;
-    width: 250px;
+    max-width: 500px !important;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
   }
   .uploadImage {
-    height: 156px;
+    height: 200px;
     display: block;
-    margin-left: 20px;
-    /* margin-right: 20px; */
-    width: 250px;
-    object-fit: contain;
+    width: 100%;
   }
   .upload-button {
     width: 96px;
-    margin-right: 0;
+    margin-right: 15px;
+    margin-left: 0px;
     margin-top: 10px;
+    margin-bottom: 0px;
   }
   .textfield {
     color: gray;
-    width: 246px;
+    width: 100%;
     height: 35px;
     border: none;
     outline: none;
     border-bottom: 1px solid gray;
     margin-bottom: 15px;
     font-size: 15px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 0px;
     margin-top: 20px;
   }
   .upload1 {
@@ -786,18 +769,15 @@ a {
     font-size: 15px;
     cursor: pointer;
   }
-
   .myUpload {
     display: inline;
   }
-
   .container-1 {
     margin-right: 5px;
     justify-content: normal;
     overflow: auto;
     padding-bottom: 30px;
   }
-
   .divIn {
     position: fixed;
     width: 100%;
@@ -850,14 +830,9 @@ a {
     padding: 0;
     padding-bottom: 70px;
   }
-
   .profile {
-    margin-top: -95px;
     font-size: 17px;
-    font-weight: bold;
-    color: gray;
-    position: absolute;
-    margin-left: 150px;
+    margin-left: 20px;
   }
   .profile label {
     font-size: 10px;
@@ -871,7 +846,6 @@ a {
     margin-bottom: -6px;
     width: 85px;
   }
-
   .MuiTextField-root {
     display: block !important;
     width: 100% !important;
@@ -880,27 +854,15 @@ a {
     width: 100% !important;
     display: block !important;
   }
-  /* .MuiOutlinedInput-input {
-    padding: 12.5px 34px !important;
-  } */
   .MuiOutlinedInput-input {
     padding-left: 14px !important;
     padding-right: 69px !important;
-    padding-top: 10px !important;
+    padding-top: 12.5px !important;
     padding-bottom: 15px !important;
     width: -webkit-fill-available !important;
   }
-
   .gmaiBtn {
     text-align: center;
-  }
-
-  .kep-login-facebook {
-    display: flex-inline;
-    width: 100% !important;
-    text-align: center;
-    font-size: 11px !important;
-    vertical-align: center !important;
   }
   .facebookImg {
     position: absolute !important;
@@ -914,7 +876,6 @@ a {
   .gmailImg {
     position: absolute;
     margin-left: -30px;
-    /* margin-top: -7px; */
   }
   .link2 {
     display: block;

@@ -7,6 +7,7 @@ import Upload from "./Upload";
 import ViewPost from "./ViewPost";
 import Menu from "./Menu";
 import EmailSignin from "./EmailSignin";
+import RemoveFollow from "./RemoveFollow";
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   ViewPost,
   Menu,
   EmailSignin,
+  RemoveFollow,
 };

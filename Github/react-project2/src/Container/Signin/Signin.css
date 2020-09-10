@@ -57,15 +57,9 @@
 }
 .showPassword,
 .showPassword-1 {
-  font-size: 14px;
-  font-weight: 600;
-  position: absolute;
-  margin-left: -60px;
-  margin-top: 11px;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background-color: #fff;
+  position: relative;
+  margin-left: -52px;
+  background: transparent;
 }
 
 .submit {
@@ -133,18 +127,19 @@
     float: right;
     right: 3px;
   }
-  .showPassword {
+  /* .showPassword,
+  .showPassword-1 {
     margin-top: -60px;
     float: right;
     position: relative;
     margin-right: 2px;
-  }
-  .showPassword-1 {
+  } */
+  /* .showPassword-1 {
     float: right;
     position: relative;
     margin-right: 2px;
     margin-top: -69px !important;
-  }
+  } */
   .submit {
     width: 100% !important;
     display: block !important;

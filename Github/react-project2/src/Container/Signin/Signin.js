@@ -29,6 +29,7 @@ const Signin = (props) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isUnique, setUnique] = useState(null);
   const [spinner, setSpinner] = useState(false);
+
   const goLogin = (login) => {
     setValidate(false);
     setShow(false);
@@ -151,7 +152,6 @@ const Signin = (props) => {
       }
     }
   };
-
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div className={isUnique === false ? "container1" : "container1-2"}>
@@ -243,75 +243,87 @@ const Signin = (props) => {
               }
               fullWidth={true}
             />
-            <TextField
-              name="newpassword"
-              type={showPassword ? "text" : "password"}
-              id="outlined-basic4"
-              label="Password"
-              variant="outlined"
-              value={state.newpassword}
-              error={isValidate && !regPassword.test(state.newpassword) && true}
-              helperText={
-                isValidate &&
-                !regPassword.test(state.newpassword) &&
-                "Please Enter Password"
-              }
-              onChange={(event) =>
-                setState({ ...state, newpassword: event.target.value.trim() })
-              }
-              fullWidth={true}
-            />
-            {state.newpassword && isUnique === false && (
-              <Button
-                type="button"
-                className={isValidate ? "showPassword-1" : "showPassword"}
-                onClick={() => (showPassword ? setShow(false) : setShow(true))}
-                text={showPassword ? "Hide" : "Show"}
+            <div style={{ display: "flex", alignItems: "baseline" }}>
+              <TextField
+                name="newpassword"
+                type={showPassword ? "text" : "password"}
+                id="outlined-basic4"
+                label="Password"
+                variant="outlined"
+                value={state.newpassword}
+                error={
+                  isValidate && !regPassword.test(state.newpassword) && true
+                }
+                helperText={
+                  isValidate &&
+                  !regPassword.test(state.newpassword) &&
+                  "Please Enter Password"
+                }
+                onChange={(event) =>
+                  setState({ ...state, newpassword: event.target.value.trim() })
+                }
+                fullWidth={true}
               />
-            )}
+              {state.newpassword && isUnique === false && (
+                <Button
+                  type="button"
+                  className={isValidate ? "showPassword-1" : "showPassword"}
+                  onClick={() =>
+                    showPassword ? setShow(false) : setShow(true)
+                  }
+                  text={showPassword ? "Hide" : "Show"}
+                />
+              )}
+            </div>
           </Fragment>
         )}
-        {isUnique === true && (
-          <TextField
-            name="password"
-            type={showPassword ? "text" : "password"}
-            id="outlined-basic5"
-            label="Password"
-            variant="outlined"
-            value={state.password}
-            error={
-              (isValidate && state.email && !state.password && true) ||
-              (isValidate && state.email && errorMessage.status === 403 && true)
-            }
-            helperText={
-              (isValidate &&
-                state.email &&
-                !state.password &&
-                "Please Enter Password") ||
-              (isValidate &&
-                state.email &&
-                errorMessage.status === 403 &&
-                errorMessage.msg)
-            }
-            onChange={(event) =>
-              setState(
-                { ...state, password: event.target.value.trim() },
-                setValidate(false),
-                setErrorMessage("")
-              )
-            }
-            fullWidth={true}
-            disabled={spinner && true}
-          />
-        )}
-        {state.password && isUnique === true && (
-          <Button
-            type="button"
-            className={isValidate ? "showPassword-1" : "showPassword"}
-            onClick={() => (showPassword ? setShow(false) : setShow(true))}
-            text={showPassword ? "Hide" : "Show"}
-          />
-        )}
+        <div style={{ display: "flex", alignItems: "baseline" }}>
+          {isUnique === true && (
+            <TextField
+              name="password"
+              type={showPassword ? "text" : "password"}
+              id="outlined-basic5"
+              label="Password"
+              variant="outlined"
+              value={state.password}
+              error={
+                (isValidate && state.email && !state.password && true) ||
+                (isValidate &&
+                  state.email &&
+                  errorMessage.status === 403 &&
+                  true)
+              }
+              helperText={
+                (isValidate &&
+                  state.email &&
+                  !state.password &&
+                  "Please Enter Password") ||
+                (isValidate &&
+                  state.email &&
+                  errorMessage.status === 403 &&
+                  errorMessage.msg)
+              }
+              onChange={(event) =>
+                setState(
+                  { ...state, password: event.target.value.trim() },
+                  setValidate(false),
+                  setErrorMessage("")
+                )
+              }
+              fullWidth={true}
+              disabled={spinner && true}
+            />
+          )}
+          {state.password && isUnique === true && (
+            <Button
+              type="button"
+              className={isValidate ? "showPassword-1" : "showPassword"}
+              onClick={() => (showPassword ? setShow(false) : setShow(true))}
+              text={showPassword ? "Hide" : "Show"}
+            />
+          )}
+        </div>
+
         {isUnique !== null && (
           <Button
             className="submit"

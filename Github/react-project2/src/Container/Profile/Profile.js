@@ -5,7 +5,13 @@ import React, {
   useRef,
   useCallback,
 } from "react";
-import { InstaProfile, ViewPost, Menu } from "../../Components";
+import {
+  InstaProfile,
+  ViewPost,
+  Menu,
+  Button,
+  RemoveFollow,
+} from "../../Components";
 import axios from "axios";
 import moment from "moment";
 import "../Profile/Profile.css";
@@ -18,7 +24,7 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import decode from "jwt-decode";
 
 const Profile = (props) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [postimage, setImage] = useState([]);
   const [spinner, setSpinner] = useState(true);
   const [viewImage, setView] = useState("");
@@ -26,7 +32,9 @@ const Profile = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(12);
   const [user, setUser] = useState();
+  const [isFollow, setFollow] = useState(false);
   let userId;
+  const myUser = props.match.params.user;
   const fetchData = () => {
     if (props.match.params) {
       if (props.match.params.user) {
@@ -56,6 +64,11 @@ const Profile = (props) => {
         setUser(response.data.user);
         setSpinner(false);
         setView("");
+        setFollow(
+          response.data.user.follower.filter(
+            (follower) => follower === decode(localStorage.getItem("tokens")).id
+          ).length > 0
+        );
       })
       .catch((errors) => {
         console.log(errors.response);
@@ -141,6 +154,39 @@ const Profile = (props) => {
       });
     handleClose();
   };
+  const getFollowing = () => {
+    axios
+      .get("http://localhost:9000/post/following", {
+        headers: {
+          Authorization: `bearer ${localStorage.getItem("tokens")}`,
+          user: myUser,
+        },
+      })
+      .then((response) => {
+        fetchData();
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
+  const removeFollowing = () => {
+    axios
+      .delete("http://localhost:9000/post/following", {
+        headers: {
+          Authorization: `bearer ${localStorage.getItem("tokens")}`,
+          user: myUser,
+        },
+      })
+      .then((response) => {
+        fetchData();
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
   function getPostedTime(postedTime) {
     const time = Math.round((new Date() - new Date(postedTime)) / 1000 / 60);
     if (time < 1) {
@@ -159,6 +205,7 @@ const Profile = (props) => {
       return `${moment(new Date(postedTime)).format("MMM DD")}`;
     }
   }
+
   return (
     <div className="profile-post">
       {viewImage && (
@@ -193,7 +240,7 @@ const Profile = (props) => {
                 <AiOutlineEllipsis
                   className="dotImg1"
                   size="2rem"
-                  onClick={userType ? handleClickOpen : null}
+                  onClick={userType && handleClickOpen}
                 />
                 <Dialog
                   onClose={handleClose}
@@ -243,15 +290,42 @@ const Profile = (props) => {
       {user && (
         <Fragment>
           <div className="navbar-divider">
-            <InstaProfile profileImage={user.photo} type={userType} />
-            <header className="profile">
-              {user.firstName} <br />
-              <span>
-                <label>{postimage.length} posts</label>
-                <label>23.5k followers</label>
-                <label>86 following</label>
-              </span>
-            </header>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <InstaProfile profileImage={user.photo} type={userType} />
+              <header className="profile">
+                <div className="headerText">
+                  {user.firstName}
+                  {myUser !== decode(localStorage.getItem("tokens")).id &&
+                  !isFollow ? (
+                    <Button
+                      text={"Follow"}
+                      className={"btn_follow"}
+                      onClick={getFollowing}
+                    />
+                  ) : (
+                    myUser !== decode(localStorage.getItem("tokens")).id &&
+                    isFollow && (
+                      <RemoveFollow
+                        url={user.photo}
+                        onClick={removeFollowing}
+                        user={user.firstName}
+                      />
+                    )
+                  )}
+                </div>
+                <span style={{ display: "block" }}>
+                  <label>
+                    <b className="follow">{postimage.length}</b> posts
+                  </label>
+                  <label>
+                    <b className="follow">{user.follower.length}</b> followers
+                  </label>
+                  <label>
+                    <b className="follow">{user.following.length}</b> following
+                  </label>
+                </span>
+              </header>
+            </div>
           </div>
         </Fragment>
       )}

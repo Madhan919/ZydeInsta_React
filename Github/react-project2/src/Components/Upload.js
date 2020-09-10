@@ -151,7 +151,7 @@ const Upload = (props) => {
           <br />
           <Button
             className="upload-button"
-            onClick={url && uploadImage}
+            onClick={uploadImage}
             text="Upload"
           />
           <Button

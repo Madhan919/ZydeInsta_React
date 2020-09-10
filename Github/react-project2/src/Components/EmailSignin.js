@@ -8,7 +8,7 @@ const EmailSignin = (props) => {
         value={props.value}
         onClick={props.onClick}
       >
-        {props.icon} &nbsp;{" "}
+        {props.icon}
         <label className={props.textClass}>{props.text}</label>
       </button>
     </center>

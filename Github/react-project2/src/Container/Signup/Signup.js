@@ -5,7 +5,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { Divider } from "@material-ui/core";
 import axios from "axios";
-import { EmailSignin } from "../../Components";
+import { EmailSignin, Button } from "../../Components";
 
 const Signup = (props) => {
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -59,7 +59,6 @@ const Signup = (props) => {
   const goSignin = () => {
     props.history.push("/signin");
   };
-
   return (
     <div className="container">
       <img className="logo" src="Image/logo1.png" alt="img" />
@@ -68,22 +67,22 @@ const Signup = (props) => {
           Sign up to see photos and videos of your friends
         </p>
         <div className="buttonDiv">
-          <GoogleLogin
-            clientId="357491041131-oqq7nbkg0eqbeh7m8e0qcufu4ucq3fp6.apps.googleusercontent.com"
-            buttonText="SIGN IN WITH GOOGLE"
-            onSuccess={responseGoogle}
-            onFailure={responseFail}
-            cookiePolicy={"single_host_origin"}
-            className="google"
-            style={{ fontWeight: "bold", textAlign: "center" }}
-            icon={true}
-          />
-
+          <center>
+            <GoogleLogin
+              clientId="357491041131-oqq7nbkg0eqbeh7m8e0qcufu4ucq3fp6.apps.googleusercontent.com"
+              buttonText="SIGN IN WITH GOOGLE"
+              onSuccess={responseGoogle}
+              onFailure={responseFail}
+              cookiePolicy={"single_host_origin"}
+              className="google"
+              icon={false}
+              theme="dark"
+            />
+          </center>
           <FacebookLogin
             appId="293536608633790"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture,first_name,last_name"
-            icon={<FaFacebookSquare size="1.5rem" className="facebookImg" />}
             textButton="Sign in with Facebook"
             onClick={responseFacebook}
             callback={responseFacebook}
@@ -94,15 +93,13 @@ const Signup = (props) => {
           >
             or
           </div>
-          <EmailSignin
-            className="gmail"
-            onClick={goSignin}
-            icon={
-              <FiMail size="1.5rem" style={{ verticalAlign: "text-top" }} />
-            }
-            text="SIGN IN WITH GMAIL"
-            textClass="textClass"
-          />
+          <center>
+            <Button
+              className="gmail"
+              onClick={goSignin}
+              text="SIGN IN WITH GMAIL"
+            />
+          </center>
         </div>
         <div className="terms">
           By signing up, you agree to our,
