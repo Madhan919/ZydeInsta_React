@@ -2,13 +2,12 @@ import React, { useState, useRef, useCallback, useEffect } from "react";
 import { InstaPost } from "../../Components";
 import moment from "moment";
 import axios from "axios";
-import Avatar from "@material-ui/core/Avatar";
 
 const Feeds = (props) => {
   const [feeds, setFeeds] = useState([]);
   const [spinner, setSpinner] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(20);
+  const [postsPerPage] = useState(10);
   useEffect(() => {
     setSpinner(true);
     axios({
@@ -23,7 +22,7 @@ const Feeds = (props) => {
         setFeeds(feeds);
       })
       .catch((e) => {
-        console.log(e);
+        console.log(e.response);
       });
   }, [props.location.state]);
   const indexOfLastPost = currentPage * postsPerPage;

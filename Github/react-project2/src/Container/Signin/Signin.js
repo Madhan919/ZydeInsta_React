@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
 const Signin = (props) => {
   const initialValues = {
     email: "",
@@ -162,7 +163,7 @@ const Signin = (props) => {
         </header>
         <TextField
           name="email"
-          id="outlined-basic1"
+          id={isUnique === null ? "outlined-basic11" : "outlined-basic1"}
           label="Email"
           variant="outlined"
           onChange={(event) =>

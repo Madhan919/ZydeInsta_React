@@ -1,3 +1,6 @@
+svg {
+  background-color: transparent !important;
+}
 .container1 {
   background-color: #fff !important;
   position: absolute;
@@ -40,19 +43,19 @@
 .angularBtn {
   position: absolute;
   outline: none !important;
-  background: #fff;
+  background: transparent;
   margin-left: -38px;
   margin-top: 8px;
-  border-color: #fff;
+  border-color: transparent;
   border: none;
 }
 .angularBtn-1 {
   position: absolute;
   outline: none !important;
-  background: #fff;
+  background: transparent;
   margin-left: -38px;
   margin-top: 8px;
-  border-color: #fff;
+  border-color: transparent;
   border: none;
 }
 .showPassword,
@@ -110,9 +113,9 @@
   .angularBtn {
     position: relative;
     outline: none !important;
-    background: #fff;
+    background: transparent;
     margin-top: -63px;
-    border-color: #fff;
+    border-color: transparent;
     border: none;
     float: right;
     right: 3px;
@@ -120,9 +123,9 @@
   .angularBtn-1 {
     position: relative;
     outline: none !important;
-    background: #fff;
+    background: transparent;
     margin-top: -72px;
-    border-color: #fff;
+    border-color: transparent;
     border: none;
     float: right;
     right: 3px;

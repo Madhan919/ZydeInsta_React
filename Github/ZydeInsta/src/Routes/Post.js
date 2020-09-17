@@ -129,62 +129,62 @@ router.delete("/delete-post", checkAuth, (req, res) => {
     });
 });
 
-router.get("/following", checkAuth, (req, res) => {
-  console.log(req.headers.user);
-  console.log(req.userData._id);
-  Users.findOneAndUpdate(
-    { _id: req.userData.id },
-    { $push: { following: req.headers.user } }
-  )
-    .select("-password")
-    .then((response) => {
-      Users.findOneAndUpdate(
-        { _id: req.headers.user },
-        { $push: { follower: req.userData.id } }
-      )
-        .select("-password")
-        .then((response1) => {
-          console.log(response1, response);
-          res
-            .status(200)
-            .json({ status: 200, response: response, response1: response1 });
-        })
-        .catch((error) => {
-          res.status(400).json({ status: 400, message: error });
-        });
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(400).json({ status: 400, message: error });
-    });
-});
+// router.get("/following", checkAuth, (req, res) => {
+//   console.log(req.headers.user);
+//   console.log(req.userData._id);
+//   Users.findOneAndUpdate(
+//     { _id: req.userData.id },
+//     { $push: { following: req.headers.user } }
+//   )
+//     .select("-password")
+//     .then((response) => {
+//       Users.findOneAndUpdate(
+//         { _id: req.headers.user },
+//         { $push: { follower: req.userData.id } }
+//       )
+//         .select("-password")
+//         .then((response1) => {
+//           console.log(response1, response);
+//           res
+//             .status(200)
+//             .json({ status: 200, response: response, response1: response1 });
+//         })
+//         .catch((error) => {
+//           res.status(400).json({ status: 400, message: error });
+//         });
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       res.status(400).json({ status: 400, message: error });
+//     });
+// });
 
-router.delete("/following", checkAuth, (req, res) => {
-  Users.findOneAndUpdate(
-    { _id: req.userData.id },
-    { $pull: { following: req.headers.user } }
-  )
-    .select("-password")
-    .then((response) => {
-      Users.findOneAndUpdate(
-        { _id: req.headers.user },
-        { $pull: { follower: req.userData.id } }
-      )
-        .select("-password")
-        .then((response1) => {
-          console.log(response1, response);
-          res
-            .status(200)
-            .json({ status: 200, response: response, response1: response1 });
-        })
-        .catch((error) => {
-          res.status(400).json({ status: 400, message: error });
-        });
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(400).json({ status: 400, message: error });
-    });
-});
+// router.delete("/following", checkAuth, (req, res) => {
+//   Users.findOneAndUpdate(
+//     { _id: req.userData.id },
+//     { $pull: { following: req.headers.user } }
+//   )
+//     .select("-password")
+//     .then((response) => {
+//       Users.findOneAndUpdate(
+//         { _id: req.headers.user },
+//         { $pull: { follower: req.userData.id } }
+//       )
+//         .select("-password")
+//         .then((response1) => {
+//           console.log(response1, response);
+//           res
+//             .status(200)
+//             .json({ status: 200, response: response, response1: response1 });
+//         })
+//         .catch((error) => {
+//           res.status(400).json({ status: 400, message: error });
+//         });
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       res.status(400).json({ status: 400, message: error });
+//     });
+// });
 
 module.exports = router;

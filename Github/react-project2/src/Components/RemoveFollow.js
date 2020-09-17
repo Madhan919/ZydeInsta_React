@@ -21,14 +21,19 @@ const useStyles = makeStyles((theme) => ({
 export default function CustomizedDialogs(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+
+  const handleSubmit = () => {
+    setOpen(false);
+    props.onClick();
+  };
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
+    <div className="remove_follow">
       <Button
         variant="outlined"
         className="btn-following"
         onClick={() => setOpen(true)}
       >
-        Following
+        {props.text}
       </Button>
       <Dialog
         onClose={() => setOpen(false)}
@@ -57,10 +62,11 @@ export default function CustomizedDialogs(props) {
         <Button
           variant="outlined"
           style={{ color: "red", padding: "15px 10px" }}
-          onClick={props.onClick}
+          onClick={handleSubmit}
         >
           <strong>Unfollow</strong>
         </Button>
+        {props.spinner && <div className="spinner-border follow_spinner" />}
         <Divider />
         <Button
           variant="outlined"

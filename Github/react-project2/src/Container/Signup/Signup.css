@@ -1,3 +1,8 @@
+.google div {
+  padding: 2px !important;
+  float: left !important;
+  margin-left: 10px !important;
+}
 .container {
   background-color: #fff !important;
   position: absolute;
@@ -30,10 +35,9 @@
   -webkit-font-smoothing: antialiased;
   font-weight: bold !important;
   font-size: 15px !important;
-  text-align: center !important;
+  text-align: left !important;
   background-color: #fff;
   width: 300px;
-  border: 1px solid #e0e0e0;
   outline: none;
   border-radius: 5px !important;
   margin-bottom: 30px;
@@ -42,7 +46,7 @@
   color: rgba(0, 0, 0, 0.54);
   max-width: -webkit-fill-available;
   display: block !important;
-  box-shadow: none !important;
+  padding-left: 20px !important;
 }
 .gmail {
   font-size: 15px !important;
@@ -58,8 +62,8 @@
   height: 48px;
   border-radius: 5px;
   max-width: 300px;
-  align-items: center;
-  text-align: center;
+  text-align: left;
+  padding-left: 20px !important;
 }
 .terms {
   font-size: 14px;

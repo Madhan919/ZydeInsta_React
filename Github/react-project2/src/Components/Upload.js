@@ -38,7 +38,6 @@ const Upload = (props) => {
   const [caption, setValue] = useState();
   const [spinner, setSpinner] = useState();
   const [state, setState] = useState();
-  const [location, setLocation] = useState();
   const handleChange = (event) => {
     setUrl(URL.createObjectURL(event.target.files[0]));
     setFile(event.target.files[0]);
@@ -57,10 +56,6 @@ const Upload = (props) => {
       .then((response) => {
         console.log("response", response);
         setState(response.data);
-        if (props.match) {
-          setLocation(props.location.url);
-        }
-
         handleClose();
         setSpinner(false);
       })
@@ -78,22 +73,7 @@ const Upload = (props) => {
   };
   return (
     <div className="upload1">
-      {state &&
-      location ===
-        `/profile/${
-          localStorage.getItem("tokens") &&
-          decode(localStorage.getItem("tokens")).id
-        }` ? (
-        <Redirect
-          to={{
-            pathname: `/profile/${
-              localStorage.getItem("tokens") &&
-              decode(localStorage.getItem("tokens")).id
-            }`,
-            state: { data: state },
-          }}
-        />
-      ) : (
+      {state && (
         <Redirect
           to={{
             pathname: `/feeds`,

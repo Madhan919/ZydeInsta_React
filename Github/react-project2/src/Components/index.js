@@ -8,6 +8,8 @@ import ViewPost from "./ViewPost";
 import Menu from "./Menu";
 import EmailSignin from "./EmailSignin";
 import RemoveFollow from "./RemoveFollow";
+import Following from "./Following";
+import Followers from "./Followers";
 
 export {
   Header,
@@ -20,4 +22,6 @@ export {
   Menu,
   EmailSignin,
   RemoveFollow,
+  Following,
+  Followers,
 };

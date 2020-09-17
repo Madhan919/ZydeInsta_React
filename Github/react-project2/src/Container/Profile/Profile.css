@@ -1,6 +1,75 @@
-/* .MuiDialog-paperScrollPaper {
-  width: 60% !important;
-} */
+#followId {
+  clear: both;
+}
+.followHeight {
+  overflow: auto;
+  display: inline-block;
+  max-height: 300px;
+}
+
+.followContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 10px 25px;
+  width: 500px;
+  max-width: 500px;
+  max-height: 200px;
+  overflow: auto;
+}
+.profileHeader {
+  display: flex;
+  align-items: center;
+}
+
+.profileHeader1 {
+  display: flex;
+  align-items: center;
+}
+.flexHeader {
+  display: flex;
+  align-items: center;
+}
+.container735 label {
+  cursor: pointer;
+}
+.follow {
+  display: inline-block !important;
+}
+
+.container735 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 400px;
+  align-items: baseline;
+}
+.header_container {
+  display: block;
+}
+.follow_spinner {
+  position: relative !important;
+  color: #fff !important;
+  width: 20px !important;
+  height: 20px !important;
+  left: 0px !important;
+}
+.following_spinner {
+  position: relative !important;
+  color: gray !important;
+  width: 20px !important;
+  height: 20px !important;
+  left: 0px !important;
+}
+.remove_follow {
+  padding: "20px";
+  text-align: "center";
+}
+.follow {
+  margin-bottom: 0px !important;
+}
+
 .user_Avatar {
   width: 150px;
   height: 150px;
@@ -79,7 +148,6 @@
   justify-content: space-around;
 }
 .MuiMenu-paper {
-  /* top: 155px !important; */
   float: right !important;
   margin-right: 110px;
 }
@@ -87,26 +155,81 @@
   width: 600px;
 }
 
+@media only screen and (max-width: 735px) {
+  /* .profileHeader {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  } */
+  .container735 {
+    width: 320px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px !important;
+  }
+  .follow {
+    display: inline-block !important;
+  }
+  .btn_follow {
+    margin-left: 0px !important;
+    line-height: 20px !important;
+    padding: 3px !important;
+    margin-top: 10px;
+    display: block !important;
+  }
+  .btn-following {
+    display: inline-block !important;
+    margin-left: 0px !important;
+  }
+  .headerText {
+    display: flex;
+    align-items: baseline;
+    font-size: 25px !important;
+    padding-bottom: 0px !important;
+  }
+  .remove_follow {
+    margin-left: 0px !important;
+    display: block !important;
+  }
+  .profile label {
+    padding-right: 0px !important;
+    font-size: 17px !important;
+  }
+}
+
 @media screen and (max-width: 999px) {
+  .followContainer {
+    width: 100%;
+  }
+  .header_container {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px;
+    justify-content: space-around;
+  }
+  .remove_follow {
+    padding: "10px";
+    display: inline-block;
+    margin-left: 20px;
+  }
   .imageWidth {
     width: 100%;
   }
-  .btn_follow {
-    margin-left: 0 !important;
-    line-height: 20px !important;
-    padding: 3px !important;
-  }
+
   .btn-following {
     margin-left: 0 !important;
     line-height: 20px !important;
     padding: 3px !important;
+    display: block;
+    margin-top: 10px;
   }
   .headerText {
     display: inline-block;
     padding-left: 0px !important;
     padding-right: 0px !important;
     padding-top: 3px !important;
-    padding-bottom: 20px !important;
+    padding-bottom: 0px !important;
+    font-size: 25px !important;
   }
   .follow {
     display: block;
@@ -116,6 +239,6 @@
     text-align: center;
   }
   .profile label {
-    font-size: 12px !important;
+    font-size: 17px !important;
   }
 }

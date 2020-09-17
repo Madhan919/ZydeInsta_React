@@ -14,4 +14,7 @@ const post = require("./src/Routes/Post");
 const { static } = require("express");
 app.use("/post", post);
 
+const Follow = require("./src/Routes/Follow");
+app.use("/", Follow);
+
 app.listen(9000, () => console.log("Server Started Successfully...!"));

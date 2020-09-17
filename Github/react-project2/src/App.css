@@ -1,3 +1,49 @@
+.Component-root {
+  padding: 5px 16px !important;
+}
+.Component-closeButton-7 {
+  top: -3px !important;
+}
+.MuiButton-root {
+  min-width: -1px !important;
+}
+.fullwidth {
+  width: 500px;
+}
+.MuiOutlinedInput-input {
+  padding: 12.5px 14px !important;
+}
+.MuiButton-label {
+  padding: 0px 10px;
+}
+label {
+  margin-bottom: 0px;
+}
+.kep-login-facebook svg {
+  vertical-align: bottom !important;
+  margin-right: 10px !important;
+}
+svg {
+  vertical-align: unset !important;
+}
+.fb {
+  background-color: #3b5998;
+  color: white;
+}
+input,
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+}
+
 .kep-login-facebook {
   padding: 0 !important;
   font-size: 15px !important;
@@ -44,8 +90,9 @@ button {
   color: blue;
   text-align: center !important;
   position: relative;
-  left: 47%;
-  top: 36%;
+  /* left: 47%;
+  top: 36%; */
+  left: 50%;
 }
 .MuiCircularProgress-colorPrimary {
   width: 30px !important;
@@ -268,7 +315,7 @@ button {
 .upload1 {
   display: inline-block;
   margin-right: 21px;
-  margin-top: -2px;
+  margin-top: 0px;
   cursor: pointer;
 }
 .MuiTypography-h6 {
@@ -320,8 +367,8 @@ button {
   justify-items: center;
   width: 320px;
 }
-.MuiOutlinedInput-input {
-  padding: 12.5px 14px !important;
+#outlined-basic11 {
+  padding: 12px 14px !important;
   padding-right: 50px !important;
 }
 .containers1 {
@@ -386,7 +433,6 @@ button {
 }
 .facebookImg {
   margin-top: -3px;
-  float: left;
   padding-right: 3px;
 }
 .gmailImg {
@@ -449,6 +495,8 @@ button {
   border-radius: 5px !important;
   max-width: -webkit-fill-available;
   height: 48px;
+  text-align: left !important;
+  padding-left: 20px !important;
 }
 .MuiFormHelperText-root.Mui-error {
   color: #f44336;
@@ -585,8 +633,7 @@ a {
   margin-left: 100px;
 }
 .profile label {
-  font-size: 16px;
-  padding-right: 15px;
+  font-size: 17px;
   color: #000000;
 }
 .logo_icon_small {
@@ -673,6 +720,17 @@ a {
   margin-right: 260px;
 }
 @media screen and (max-width: 999px) {
+  #outlined-basic11 {
+    padding: 12px 14px !important;
+    padding-right: 50px !important;
+  }
+  #outlined-basic1 {
+    padding: 12px 14px !important;
+    padding-right: 0px !important;
+  }
+  .MuiDialogContent-dividers {
+    width: 100% !important;
+  }
   .textClass {
     display: block;
   }
@@ -901,6 +959,13 @@ a {
   }
 }
 @media only screen and (max-width: 1365px) and (min-width: 1000px) {
+  .profile label {
+    padding-right: 0px;
+    padding-top: 10px;
+  }
+  .follow {
+    display: inline-block !important;
+  }
   .overlayDiv {
     display: none;
   }

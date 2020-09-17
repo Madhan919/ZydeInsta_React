@@ -2,10 +2,11 @@ import React from "react";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 import { FaFacebookSquare } from "react-icons/fa";
-import { FiMail } from "react-icons/fi";
+import { FcGoogle } from "react-icons/fc";
 import { Divider } from "@material-ui/core";
 import axios from "axios";
 import { EmailSignin, Button } from "../../Components";
+import gmail from "../../Images/gmail.png";
 
 const Signup = (props) => {
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -75,8 +76,13 @@ const Signup = (props) => {
               onFailure={responseFail}
               cookiePolicy={"single_host_origin"}
               className="google"
-              icon={false}
-              theme="dark"
+              icon={
+                <FcGoogle
+                  size="1.5rem"
+                  style={{ marginLeft: "10px", float: "left" }}
+                />
+              }
+              theme="light"
             />
           </center>
           <FacebookLogin
@@ -86,6 +92,12 @@ const Signup = (props) => {
             textButton="Sign in with Facebook"
             onClick={responseFacebook}
             callback={responseFacebook}
+            icon={
+              <FaFacebookSquare
+                size="1.5rem"
+                style={{ marginLeft: "10px", float: "left" }}
+              />
+            }
           />
           <div
             className="center"
@@ -94,11 +106,24 @@ const Signup = (props) => {
             or
           </div>
           <center>
-            <Button
-              className="gmail"
-              onClick={goSignin}
-              text="SIGN IN WITH GMAIL"
-            />
+            <button className="gmail" onClick={goSignin}>
+              <img
+                src={gmail}
+                alt="gmail"
+                style={{
+                  marginLeft: "12px",
+                  width: "20px",
+                  height: "20px",
+                  background: "white",
+                  marginRight: "12px",
+                }}
+              />
+              {/* <SiGmail
+                size="1.4rem"
+                style={{ marginLeft: "10px", float: "left" }}
+              /> */}
+              SIGN IN WITH GMAIL
+            </button>
           </center>
         </div>
         <div className="terms">
