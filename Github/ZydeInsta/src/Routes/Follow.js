@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+
 const checkAuth = require("../Authentication/check-auth");
 const router = express.Router();
 
@@ -22,8 +23,9 @@ router.get("/getfollowing", checkAuth, (req, res) => {
 });
 
 router.delete("/following", checkAuth, (req, res) => {
-  Follow.remove({ follower: req.headers.user }, { following: req.userData.id })
-    .select("-password")
+  Follow.deleteOne({
+    $and: [{ follower: req.headers.user }, { following: req.userData.id }],
+  })
     .then((response) => {
       res.status(200).json({ status: 200, response: response });
     })

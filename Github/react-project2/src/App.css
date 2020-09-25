@@ -1,3 +1,6 @@
+.marginRight-20 {
+  margin-right: 20px !important;
+}
 .Component-root {
   padding: 5px 16px !important;
 }
@@ -14,7 +17,7 @@
   padding: 12.5px 14px !important;
 }
 .MuiButton-label {
-  padding: 0px 10px;
+  padding: 2px 12px;
 }
 label {
   margin-bottom: 0px;
@@ -23,9 +26,9 @@ label {
   vertical-align: bottom !important;
   margin-right: 10px !important;
 }
-svg {
+/* svg {
   vertical-align: unset !important;
-}
+} */
 .fb {
   background-color: #3b5998;
   color: white;
@@ -51,6 +54,7 @@ input,
 .google span {
   font-weight: bold !important;
   padding: 0 !important;
+  vertical-align: text-top;
 }
 .vertical_center {
   display: flex;

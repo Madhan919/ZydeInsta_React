@@ -6,6 +6,7 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import ImageAvatars from "./Avatar";
 import axios from "axios";
 import spinner from "../Images/spinner.gif";
+import { baseURL } from "../Container";
 
 const styles = (theme) => ({
   root: {
@@ -43,8 +44,10 @@ const InstaProfile = (props) => {
   }, [url]);
   const changeProfile = () => {
     axios
-      .get("http://localhost:9000/post/change-profile", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("tokens")}` },
+      .get(`${baseURL.axios.baseURL}/post/change-profile`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("tokens")}`,
+        },
       })
       .then((response) => {
         setProfile(response.data.response.photo);
@@ -64,7 +67,7 @@ const InstaProfile = (props) => {
     const fd = new FormData();
     fd.append("photo", event.target.files[0]);
     axios
-      .patch("http://localhost:9000/post/change-profile", fd, {
+      .patch(`${baseURL.axios.baseURL}/post/change-profile`, fd, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("tokens")}`,
         },
@@ -79,7 +82,9 @@ const InstaProfile = (props) => {
     handleClose();
   };
   const handleClickOpen = () => {
-    setOpen(true);
+    if (props.type === true) {
+      setOpen(true);
+    }
   };
   const handleClose = () => {
     setOpen(false);
@@ -87,7 +92,7 @@ const InstaProfile = (props) => {
   const removeProfile = () => {
     setLoader(true);
     axios
-      .delete("http://localhost:9000/post/remove-profile", {
+      .delete(`${baseURL.axios.baseURL}/post/remove-profile`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("tokens")}`,
           photo: profile,
@@ -112,10 +117,10 @@ const InstaProfile = (props) => {
           loader
             ? spinner
             : !loader && !url && props.profileImage
-            ? `http://localhost:9000/${props.profileImage}`
+            ? `${baseURL.axios.baseURL}/${props.profileImage}`
             : !loader && url && url
         }
-        onClick={props.type === true && handleClickOpen}
+        onClick={handleClickOpen}
       />
       <Dialog
         onClose={handleClose}

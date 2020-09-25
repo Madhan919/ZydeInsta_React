@@ -9,6 +9,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { useHistory } from "react-router-dom";
 import decode from "jwt-decode";
 import { Button } from ".";
+import { baseURL } from "../Container";
 
 import { RemoveFollow } from ".";
 
@@ -30,7 +31,7 @@ const DialogTitle = withStyles(styles)((props) => {
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
       <Typography variant="h6">{children}</Typography>
-      {onClose ? (
+      {onClose && (
         <IconButton
           aria-label="close"
           className={classes.closeButton}
@@ -38,7 +39,7 @@ const DialogTitle = withStyles(styles)((props) => {
         >
           <CloseIcon />
         </IconButton>
-      ) : null}
+      )}
     </MuiDialogTitle>
   );
 });
@@ -47,6 +48,9 @@ export default function CustomizedDialogs(props) {
 
   const [open, setOpen] = React.useState(false);
   const [spinner, setSpinner] = React.useState("");
+  useEffect(() => {
+    setSpinner("");
+  }, [props.list]);
 
   const handleClickOpen = () => {
     if (props.followers.length > 0) {
@@ -63,17 +67,13 @@ export default function CustomizedDialogs(props) {
     setSpinner(id);
     setTimeout(() => {
       props.onClick(id);
-      setSpinner("");
-    }, 2000);
-
-    // setOpen(false);
+    }, 1000);
   };
   const handleSubmit2 = (id) => {
     setSpinner(id);
     setTimeout(() => {
       props.onclick(id);
-      setSpinner("");
-    }, 2000);
+    }, 1000);
   };
 
   return (
@@ -87,17 +87,20 @@ export default function CustomizedDialogs(props) {
         open={open}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Follower
+          Followers
         </DialogTitle>
         <div className="followHeight">
           {props.followers.length > 0 &&
             props.followers.map((follower) => (
-              <div className="followContainer" id={follower.userFollowing._id}>
+              <div
+                className="followContainer"
+                id={follower.userFollowing._id}
+                key={follower.userFollowing._id}
+              >
                 <div className="flexHeader">
                   <Avatar
-                    alt="Remy Sharp"
-                    src={`http://localhost:9000/${follower.userFollowing.photo}`}
-                    style={{ marginLeft: "10px" }}
+                    alt={follower.userFollowing.firstName}
+                    src={`${baseURL.axios.baseURL}/${follower.userFollowing.photo}`}
                     onClick={() => goProfile(follower.userFollowing._id)}
                   />
                   <header
@@ -111,14 +114,18 @@ export default function CustomizedDialogs(props) {
                     {follower.userFollowing.firstName}
                   </header>
                 </div>
+
                 {follower.userFollowing._id !==
                   decode(localStorage.getItem("tokens")).id &&
-                  (props.following.filter(
-                    (follow) =>
-                      follow.userFollower._id === follower.userFollowing._id &&
-                      follow.userFollowing._id ===
+                  (props.list
+                    .filter(
+                      (follow) => follow.follower === follower.userFollowing._id
+                    )
+                    .filter(
+                      (follow) =>
+                        follow.following ===
                         decode(localStorage.getItem("tokens")).id
-                  ).length > 0 ? (
+                    ).length > 0 ? (
                     <RemoveFollow
                       url={follower.userFollowing.photo}
                       user={follower.userFollowing.firstName}
@@ -126,10 +133,11 @@ export default function CustomizedDialogs(props) {
                         spinner === follower.userFollowing._id ? (
                           <div
                             style={{
-                              color: "blue",
-                              left: "0px",
+                              color: "rgba(var(--d69, 0, 149, 246), 1)",
+                              left: "16px",
                               width: "20px",
                               height: "20px",
+                              marginRight: "28px",
                             }}
                             className="spinner-border"
                           />

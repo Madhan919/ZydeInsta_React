@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from "react";
 import { InstaPost } from "../../Components";
 import moment from "moment";
 import axios from "axios";
+import { baseURL } from "..";
 
 const Feeds = (props) => {
   const [feeds, setFeeds] = useState([]);
@@ -9,12 +10,15 @@ const Feeds = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
   useEffect(() => {
+    let isCancelled = false;
+    // if (!isCancelled) {
     setSpinner(true);
-    axios({
-      method: "GET",
-      url: "http://localhost:9000/post/feeds",
-      headers: { Authorization: `Bearer ${localStorage.getItem("tokens")}` },
-    })
+    axios
+      .get(`${baseURL.axios.baseURL}/post/feeds`, {
+        headers: {
+          Authorization: `bearer ${localStorage.getItem("tokens")}`,
+        },
+      })
       .then((response) => {
         const feeds = response.data.response.sort(function (a, b) {
           return new Date(b.postedTime) - new Date(a.postedTime);
@@ -24,7 +28,12 @@ const Feeds = (props) => {
       .catch((e) => {
         console.log(e.response);
       });
-  }, [props.location.state]);
+    // }
+
+    // return () => {
+    //   isCancelled = true;
+    // };
+  }, []);
   const indexOfLastPost = currentPage * postsPerPage;
   const currentPosts = feeds.slice(0, indexOfLastPost);
   const observer = useRef();
@@ -38,7 +47,7 @@ const Feeds = (props) => {
             setTimeout(() => {
               setCurrentPage((prevPageNumber) => prevPageNumber + 1);
               setSpinner(false);
-            }, 2000);
+            }, 1000);
           }
         }
       });
@@ -77,12 +86,12 @@ const Feeds = (props) => {
               <InstaPost
                 profileSrc={
                   image.user.photo
-                    ? `http://localhost:9000/${image.user.photo}`
+                    ? `${baseURL.axios.baseURL}/${image.user.photo}`
                     : "Image/logoAvatar.jpg"
                 }
                 profileName={image.user.firstName}
                 postedTime={getPostedTime(image.postedTime)}
-                imgSrc={`http://localhost:9000/${image.image}`}
+                imgSrc={`${baseURL.axios.baseURL}/${image.image}`}
                 caption={image.caption}
                 onClick={() => goProfile(image.user._id)}
               />

@@ -84,7 +84,7 @@
   background: rgba(var(--d69, 0, 149, 246), 1) !important;
   color: rgba(var(--eca, 255, 255, 255), 1) !important;
   border-radius: 3px !important;
-  padding: 2px 0;
+  padding: 2px 27px;
   cursor: pointer;
   border-style: solid;
   border-width: 1px;
@@ -95,9 +95,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  min-width: 100px;
-  width: 100%;
-  max-width: 100px;
+  min-width: 100px !important;
+  /* width: 100%;
+  max-width: 100px; */
   margin-right: 20px;
 }
 
@@ -105,7 +105,7 @@
   margin-left: 20px !important;
   background: transparent !important;
   color: rgba(var(--f75, 38, 38, 38), 1) !important;
-  padding: 2px 0;
+  padding: 2px 0 !important;
   cursor: pointer;
   border-radius: 3px;
   border-style: solid;
@@ -117,7 +117,7 @@
   overflow: hidden;
   text-overflow: ellipsis !important;
   white-space: nowrap;
-  min-width: 100px;
+  min-width: 100px !important;
   width: 100%;
   max-width: 100px;
   border: 1px solid rgba(var(--ca6, 219, 219, 219), 1) !important;
@@ -156,11 +156,10 @@
 }
 
 @media only screen and (max-width: 735px) {
-  /* .profileHeader {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  } */
+  .followHeight {
+    height: 100%;
+    max-height: 100%;
+  }
   .container735 {
     width: 320px;
     display: flex;
@@ -172,10 +171,11 @@
   }
   .btn_follow {
     margin-left: 0px !important;
-    line-height: 20px !important;
-    padding: 3px !important;
+    /* line-height: 22px !important; */
+    /* padding: 3px !important; */
     margin-top: 10px;
     display: block !important;
+    padding: 2px 27px !important;
   }
   .btn-following {
     display: inline-block !important;

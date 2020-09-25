@@ -8,7 +8,7 @@ import { Button } from ".";
 import axios from "axios";
 import { FiCamera } from "react-icons/fi";
 import { Redirect } from "react-router-dom";
-import decode from "jwt-decode";
+import { baseURL } from "../Container";
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -47,7 +47,7 @@ const Upload = (props) => {
     fd.append("image", selectedFile);
     setSpinner(true);
     axios
-      .post("http://localhost:9000/post", fd, {
+      .post(`${baseURL.axios.baseURL}/post`, fd, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("tokens")}`,
           caption: caption,

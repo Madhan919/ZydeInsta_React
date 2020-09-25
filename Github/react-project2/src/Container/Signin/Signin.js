@@ -3,11 +3,11 @@ import TextField from "@material-ui/core/TextField";
 import { AiOutlineRight } from "react-icons/ai";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "../../Components";
+import { baseURL } from "..";
 import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
       width: "25ch",
     },
   },
@@ -47,7 +47,7 @@ const Signin = (props) => {
     if (regEmail.test(state.email)) {
       setSpinner(true);
       axios
-        .get("http://localhost:9000/check-email", {
+        .get(`${baseURL.axios.baseURL}/check-email`, {
           headers: {
             email: state.email,
           },
@@ -93,7 +93,7 @@ const Signin = (props) => {
       };
       setSpinner(true);
       axios
-        .post("http://localhost:9000/signup", userData)
+        .post(`${baseURL.axios.baseURL}/signup`, userData)
         .then((response) => {
           console.log("Data", response);
           if (response.data.token) {
@@ -122,7 +122,7 @@ const Signin = (props) => {
       setSpinner(true);
       if (isUnique === true) {
         axios
-          .get("http://localhost:9000/signin", {
+          .get(`${baseURL.axios.baseURL}/signin`, {
             headers: {
               email: state.email,
               password: state.password,
@@ -330,11 +330,11 @@ const Signin = (props) => {
             className="submit"
             onClick={isUnique === false ? goSignup : goSignin}
             text={!spinner && "Next"}
-            style={
-              (isUnique === true && state.password.length < 5) || spinner
-                ? { opacity: "0.5" }
-                : { opacity: "1" }
-            }
+            // style={
+            //   (isUnique === true && state.password.length < 5) || spinner
+            //     ? { opacity: "0.5" }
+            //     : { opacity: "1" }
+            // }
             loader={
               spinner && (
                 <div

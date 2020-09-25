@@ -24,6 +24,7 @@ import { Dialog, Typography } from "@material-ui/core";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import decode from "jwt-decode";
+import { baseURL } from "..";
 
 const Profile = (props) => {
   const [open, setOpen] = useState(false);
@@ -57,6 +58,14 @@ const Profile = (props) => {
   }, []);
 
   useEffect(() => {
+    // let isCancelled = false;
+    // if (!isCancelled) {
+
+    // }
+
+    // return () => {
+    //   isCancelled = true;
+    // };
     getFollowing();
     getAllFollowers();
   }, [props.match.params && props.match.params.user, following, follower]);
@@ -79,7 +88,7 @@ const Profile = (props) => {
     setImage("");
     setUser("");
     axios
-      .get("http://localhost:9000/post/view-profile", {
+      .get(`${baseURL.axios.baseURL}/post/view-profile`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("tokens")}`,
           user: userId,
@@ -116,7 +125,7 @@ const Profile = (props) => {
             setTimeout(() => {
               setCurrentPage((prevPageNumber) => prevPageNumber + 1);
               setSpinner(false);
-            }, 3000);
+            }, 2000);
           }
         }
       });
@@ -159,7 +168,7 @@ const Profile = (props) => {
   const deletePost = (id, post) => {
     setSpinner(true);
     axios
-      .delete("http://localhost:9000/post/delete-post", {
+      .delete(`${baseURL.axios.baseURL}/post/delete-post`, {
         headers: {
           Authorization: `bearer ${localStorage.getItem("tokens")}`,
           id: id,
@@ -168,9 +177,7 @@ const Profile = (props) => {
       })
       .then((response) => {
         console.log(response);
-        setTimeout(() => {
-          fetchData();
-        }, 3000);
+        fetchData();
       })
       .catch((errors) => {
         console.log(errors.response);
@@ -180,7 +187,7 @@ const Profile = (props) => {
   const getFollowing = () => {
     setInnerSpinner(true);
     axios
-      .get("http://localhost:9000/following", {
+      .get(`${baseURL.axios.baseURL}/following`, {
         headers: {
           Authorization: `bearer ${localStorage.getItem("tokens")}`,
           user: myUser,
@@ -205,16 +212,15 @@ const Profile = (props) => {
         );
         setUserFollowing(
           response.data.response.filter(
-            (follower) => follower.userFollower._id != myUser
+            (follower) => follower.userFollower._id !== myUser
           )
         );
         setUserFollower(
           response.data.response.filter(
-            (follower) => follower.userFollowing._id != myUser
+            (follower) => follower.userFollowing._id !== myUser
           )
         );
-
-        console.log(response.data.response);
+        getAllFollowers();
         setInnerSpinner(false);
         setSpinner(false);
       })
@@ -226,7 +232,7 @@ const Profile = (props) => {
   const goFollowing = () => {
     setInnerSpinner(true);
     axios
-      .get("http://localhost:9000/getfollowing", {
+      .get(`${baseURL.axios.baseURL}/getfollowing`, {
         headers: {
           Authorization: `bearer ${localStorage.getItem("tokens")}`,
           user: myUser,
@@ -243,7 +249,7 @@ const Profile = (props) => {
   const goUserFollowing = (myUserId) => {
     setInnerSpinner(true);
     axios
-      .get("http://localhost:9000/getfollowing", {
+      .get(`${baseURL.axios.baseURL}/getfollowing`, {
         headers: {
           Authorization: `bearer ${localStorage.getItem("tokens")}`,
           user: myUserId,
@@ -251,7 +257,6 @@ const Profile = (props) => {
       })
       .then((response) => {
         getFollowing();
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error.response);
@@ -261,7 +266,7 @@ const Profile = (props) => {
   const removeFollowing = () => {
     setInnerSpinner(true);
     axios
-      .delete("http://localhost:9000/following", {
+      .delete(`${baseURL.axios.baseURL}/following`, {
         headers: {
           Authorization: `bearer ${localStorage.getItem("tokens")}`,
           user: myUser,
@@ -269,7 +274,6 @@ const Profile = (props) => {
       })
       .then((response) => {
         getFollowing();
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error.response);
@@ -278,7 +282,7 @@ const Profile = (props) => {
   const removeUserFollowing = (userId) => {
     setInnerSpinner(true);
     axios
-      .delete("http://localhost:9000/following", {
+      .delete(`${baseURL.axios.baseURL}/following`, {
         headers: {
           Authorization: `bearer ${localStorage.getItem("tokens")}`,
           user: userId,
@@ -286,7 +290,7 @@ const Profile = (props) => {
       })
       .then((response) => {
         getFollowing();
-        console.log(response.data);
+        getAllFollowers();
       })
       .catch((error) => {
         console.log(error.response);
@@ -294,14 +298,13 @@ const Profile = (props) => {
   };
   const getAllFollowers = () => {
     axios
-      .get("http://localhost:9000/getFollowers", {
+      .get(`${baseURL.axios.baseURL}/getFollowers`, {
         headers: {
           Authorization: `bearer ${localStorage.getItem("tokens")}`,
         },
       })
       .then((response) => {
         setFollowList(response.data.response);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error.response);
@@ -333,11 +336,11 @@ const Profile = (props) => {
             <ViewPost
               profileSrc={
                 viewImage.userImage
-                  ? `http://localhost:9000/${viewImage.userImage}`
+                  ? `${baseURL.axios.baseURL}/${viewImage.userImage}`
                   : logoAvatar
               }
               profileName={viewImage.name}
-              imgSrc={`http://localhost:9000/${viewImage.photo}`}
+              imgSrc={`${baseURL.axios.baseURL}/${viewImage.photo}`}
               caption={viewImage.text}
               postedTime={getPostedTime(viewImage.time)}
               onClick={() => setView("")}
@@ -449,7 +452,6 @@ const Profile = (props) => {
                       )
                     )}
                   </div>
-
                   {windowWidth > 734 && (
                     <div className="container735">
                       <label>
@@ -470,6 +472,9 @@ const Profile = (props) => {
                         <Following
                           onClick={removeUserFollowing}
                           following={userFollowing}
+                          followers={userFollower}
+                          onclick={goUserFollowing}
+                          list={followList}
                         />
                       </label>
                     </div>
@@ -500,6 +505,9 @@ const Profile = (props) => {
               <Following
                 onClick={removeUserFollowing}
                 following={userFollowing}
+                followers={userFollower}
+                onclick={goUserFollowing}
+                list={followList}
               />
             </label>
           </div>
@@ -510,7 +518,7 @@ const Profile = (props) => {
               <div
                 id={index}
                 ref={lastBookElementRef}
-                key={image.image + index}
+                key={image._id}
                 className="box-1"
                 onClick={() =>
                   setView({
@@ -533,7 +541,7 @@ const Profile = (props) => {
                       height: "100%",
                       objectFit: "cover",
                     }}
-                    src={`http://localhost:9000/${image.image}`}
+                    src={`${baseURL.axios.baseURL}/${image.image}`}
                     alt="img"
                   />
                 </div>

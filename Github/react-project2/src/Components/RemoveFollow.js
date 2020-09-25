@@ -4,6 +4,7 @@ import Dialog from "@material-ui/core/Dialog";
 import { Divider } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
+import { baseURL } from "../Container";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,17 +43,14 @@ export default function CustomizedDialogs(props) {
       >
         <center style={{ paddingTop: "20px" }}>
           <Avatar
-            alt="Remy Sharp"
-            src={`http://localhost:9000/${props.url}`}
+            alt={props.user}
+            src={`${baseURL.axios.baseURL}/${props.url}`}
             className={classes.large}
             style={{ textAlign: "center" }}
           />
           <label
             style={{
-              paddingTop: "20px",
-              paddingBottom: "20px",
-              paddingRight: "130px",
-              paddingLeft: "130px",
+              padding: "20px 130px",
             }}
           >
             Unfollow <strong>{props.user}?</strong>

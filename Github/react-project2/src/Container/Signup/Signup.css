@@ -46,11 +46,12 @@
   color: rgba(0, 0, 0, 0.54);
   max-width: -webkit-fill-available;
   display: block !important;
-  padding-left: 20px !important;
+  padding-left: 10px !important;
 }
 .gmail {
   font-size: 15px !important;
-  display: block;
+  display: flex;
+  align-items: center;
   background-color: #d44638;
   width: 100%;
   border: 1px solid #e0e0e0;
@@ -96,6 +97,13 @@
   cursor: pointer;
   margin-bottom: 0;
 }
+.gmail-icon {
+  margin-left: 3px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  margin-right: 12px;
+}
 @media screen and (max-width: 999px) {
   .container {
     width: 90% !important;
@@ -117,11 +125,25 @@
   .link {
     display: inline-block;
   }
+  .gmail-icon {
+    margin-left: 3px;
+  }
 }
 
 @media only screen and (max-width: 1365px) and (min-width: 1000px) {
   .container {
     width: 40% !important;
     text-align: center;
+  }
+  .gmail {
+    padding-left: 10px !important;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .container {
+    padding: 20px;
+  }
+  .account {
+    font-size: 14px;
   }
 }

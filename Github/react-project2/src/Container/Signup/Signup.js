@@ -5,8 +5,8 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Divider } from "@material-ui/core";
 import axios from "axios";
-import { EmailSignin, Button } from "../../Components";
 import gmail from "../../Images/gmail.png";
+import { baseURL } from "..";
 
 const Signup = (props) => {
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -16,7 +16,7 @@ const Signup = (props) => {
       loginType: "google",
     };
     axios
-      .post("http://localhost:9000/social-login", accessToken)
+      .post(`${baseURL.axios.baseURL}/social-login`, accessToken)
       .then((result) => {
         if (result.data.token) {
           localStorage.setItem("tokens", result.data.token);
@@ -41,7 +41,7 @@ const Signup = (props) => {
       loginType: "facebook",
     };
     axios
-      .post("http://localhost:9000/social-login", accessToken)
+      .post(`${baseURL.axios.baseURL}/social-login`, accessToken)
       .then((result) => {
         if (result.data.token) {
           localStorage.setItem("tokens", result.data.token);
@@ -95,7 +95,7 @@ const Signup = (props) => {
             icon={
               <FaFacebookSquare
                 size="1.5rem"
-                style={{ marginLeft: "10px", float: "left" }}
+                // style={{ marginLeft: "10px", float: "left" }}
               />
             }
           />
@@ -107,17 +107,7 @@ const Signup = (props) => {
           </div>
           <center>
             <button className="gmail" onClick={goSignin}>
-              <img
-                src={gmail}
-                alt="gmail"
-                style={{
-                  marginLeft: "12px",
-                  width: "20px",
-                  height: "20px",
-                  background: "white",
-                  marginRight: "12px",
-                }}
-              />
+              <img src={gmail} alt="gmail" className="gmail-icon" />
               {/* <SiGmail
                 size="1.4rem"
                 style={{ marginLeft: "10px", float: "left" }}

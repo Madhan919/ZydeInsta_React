@@ -5,6 +5,7 @@ import { Profile, Feeds } from "../Container";
 import { Button, Upload } from ".";
 import logo1 from "../../src/Images/logo1.png";
 import decode from "jwt-decode";
+
 const Header = (props) => {
   useEffect(() => {
     if (!localStorage.getItem("tokens")) {
